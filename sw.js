@@ -1,4 +1,4 @@
-const CACHE_NAME = 'loveu-app-v25';
+const CACHE_NAME = 'loveu-app-v26';
 
 self.addEventListener('install', (e) => {
   self.skipWaiting();
