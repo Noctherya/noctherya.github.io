@@ -20,7 +20,7 @@ const letters = [
   },
   {
     title: "you miss me",
-    body: "i miss you too. a lot.\n\nsometimes the distance is hard, but you know what? you're with me in every moment. in my thoughts, in my heart, in the song i'm listening to right now, like literally every song is somehow connected to you.\n\nthis letter is my little way of telling you: i'm here. even when i'm not physically with you.\n\ni'm counting the days until i see you again. You know that. and until then: open this letter as often as you want. it stays here for you. That's why I did this whole thing. Reread it as many times as you need to. Or call me. Or text me. Idc - I'll always answer if it's you, no matter what situation I'm in.\n\ni love you so so so much Darling.",
+    body: "i miss you too. a lot.\n\nsometimes the distance is hard, but you know what? you're with me in every moment. in my thoughts, in my heart, in the song i'm listening to right now, like literally every song is somehow connected to you.\n\nthis letter is my little way of telling you: i'm here. even when i'm not physically with you.\n\ni'm counting the days until I see you again. You know that. and until then: open this letter as often as you want. it stays here for you. That's why I did this whole thing. Reread it as many times as you need to. Or call me. Or text me. Idc - I'll always answer if it's you, no matter what situation I'm in.\n\ni love you so so so much Darling.",
     media: []
   }
 ];
@@ -35,112 +35,34 @@ const myDayData = [
   }
 ];
 
-// Die Geheimnisse für die Herzen (Ganz ohne Titel!)
+// Die Geheimnisse (Deine Texte + die neuen Insecurities & Love Reasons)
 const secretsData = [
-  {
-    body: "The way you look at me when you think I don't notice. It makes me feel like the only person in the world.",
-    image: "" 
-  },
-  {
-    body: "I was walking home today and saw a couple holding hands. And suddenly the distance felt so heavy. I just wanted to hold yours.",
-    image: "IMG_20261119_140747.jpg"
-  },
-  {
-    body: "I am so incredibly proud of you. Never forget that.",
-    image: ""
-  }
-  {
-    body: "I heard a song today and immediately thought of you. Suddenly the whole day was a little bit better.",
-    image: ""
-  },
-  {
-    body: "i love the way you always say goodnight before hanging up on call. I always want to call back the exact second we hang up",
-    image: ""
-  },
-  {
-    body: "I really really miss hugging you, 9/10 times I'm crying when hugging Hasi",
-    image: ""
-  },
-  {
-    body: "I saw someone today that laughs the way you do, my heart made a flip, silly thing, hoping you'd be there",
-    image: ""
-  },
-  {
-    body: "I've already imagined what our wedding would look like, ooops",
-    image: ""
-  },
-  {
-    body: "I have never loved anyone the way I love you. And I'm being dead serious right now, you make me feel complete",
-    image: ""
-  },
-  {
-    body: "sometimes I'm scared of being annoying if I text too much but I just can't help it",
-    image: ""
-  },
-  {
-    body: "yes I am jealous. insanely jealous of everyone that came before me and I know how ridiculous that is because they made you become the person you are now, and I love that person more than anything else. but sometimes it just..hurts?",
-    image: ""
-  },
-  {
-    body: "I don't know if you know. but you're really healing my relationship toward food and that's more than anyone has ever done for me",
-    image: ""
-  },
-  {
-    body: "I cried today because I miss you so much, but it wasn't just sadness, I was overwhelmed by how much I'm feeling for you",
-    image: ""
-  },
-  {
-    body: "when I was on the bus today I couldn't stop thinking about how much better it would be if you'd be there, holding my hand, me resting my head on your shoulder, I just really miss you",
-    image: ""
-  },
-  {
-    body: "You never ask me to be someone I'm not and I think that is worth so much more than you think it is",
-    image: ""
-  },
-  {
-    body: "sometimes I'm scared that you'll wake up one day and realize I'm not as special as you thought I were",
-    image: ""
-  },
-  {
-    body: "when I'm with you my head simply goes quiet, you are my calm",
-    image: ""
-  },
-  {
-    body: "I'm so so incredibly proud of you, for trying to let go of your bad habits for me and I'm trying my best to do the same, I want to be a better person - for you - for us",
-    image: ""
-  },
-  {
-    body: "I love ALL the petnames you give me",
-    image: ""
-  },
-  {
-    body: "I love your sleepy you when I call to wake you up, I'm always smiling doing so",
-    image: ""
-  },
-  {
-    body: "sometimes I hate myself so much I just want to hide from everyone but then I remember you think I'm beautiful and that - just helps",
-    image: ""
-  },
-  {
-    body: "I'm scared that if I tell you how much I actually need you, you'd feel trapped",
-    image: ""
-  },
-  {
-    body: "I love your humor. even your bad jokes that you know are bad but tell them anyway",
-    image: ""
-  },
-  {
-    body: "silly but valid. I love your height. the way I have to look up at you",
-    image: ""
-  },
-  {
-    body: "I love that you make me feel like the most important person in the world. even if it's just through our calls. it matters to me",
-    image: ""
-  },
-  {
-    body: "I worry that I'm not enough for you. not pretty enough, not as pretty as your ex-girlfriends. that I'm not smart or funny enough..just not enough.",
-    image: ""
-  },
+  { body: "The way you look at me when you think I don't notice. It makes me feel like the only person in the world.", image: "" },
+  { body: "I was walking home today and saw a couple holding hands. And suddenly the distance felt so heavy. I just wanted to hold yours.", image: "IMG_20261119_140747.jpg" },
+  { body: "I am so incredibly proud of you. Never forget that.", image: "" },
+  { body: "I heard a song today and immediately thought of you. Suddenly the whole day was a little bit better.", image: "" },
+  { body: "i love the way you always say goodnight before hanging up on call. I always want to call back the exact second we hang up", image: "" },
+  { body: "I really really miss hugging you, 9/10 times I'm crying when hugging Hasi", image: "" },
+  { body: "I saw someone today that laughs the way you do, my heart made a flip, silly thing, hoping you'd be there", image: "" },
+  { body: "I've already imagined what our wedding would look like, ooops", image: "" },
+  { body: "I have never loved anyone the way I love you. And I'm being dead serious right now, you make me feel complete", image: "" },
+  { body: "sometimes I'm scared of being annoying if I text too much but I just can't help it", image: "" },
+  { body: "yes I am jealous. insanely jealous of everyone that came before me and I know how ridiculous that is because they made you become the person you are now, and I love that person more than anything else. but sometimes it just..hurts?", image: "" },
+  { body: "I don't know if you know. but you're really healing my relationship toward food and that's more than anyone has ever done for me", image: "" },
+  { body: "I cried today because I miss you so much, but it wasn't just sadness, I was overwhelmed by how much I'm feeling for you", image: "" },
+  { body: "when I was on the bus today I couldn't stop thinking about how much better it would be if you'd be there, holding my hand, me resting my head on your shoulder, I just really miss you", image: "" },
+  { body: "You never ask me to be someone I'm not and I think that is worth so much more than you think it is", image: "" },
+  { body: "sometimes I'm scared that you'll wake up one day and realize I'm not as special as you thought I were", image: "" },
+  { body: "when I'm with you my head simply goes quiet, you are my calm", image: "" },
+  { body: "I'm so so incredibly proud of you, for trying to let go of your bad habits for me and I'm trying my best to do the same, I want to be a better person - for you - for us", image: "" },
+  { body: "I love ALL the petnames you give me", image: "" },
+  { body: "I love your sleepy you when I call to wake you up, I'm always smiling doing so", image: "" },
+  { body: "sometimes I hate myself so much I just want to hide from everyone but then I remember you think I'm beautiful and that - just helps", image: "" },
+  { body: "I'm scared that if I tell you how much I actually need you, you'd feel trapped", image: "" },
+  { body: "I love your humor. even your bad jokes that you know are bad but tell them anyway", image: "" },
+  { body: "silly but valid. I love your height. the way I have to look up at you", image: "" },
+  { body: "I love that you make me feel like the most important person in the world. even if it's just through our calls. it matters to me", image: "" },
+  { body: "I worry that I'm not enough for you. not pretty enough, not as pretty as your ex-girlfriends. that I'm not smart or funny enough..just not enough.", image: "" }
 ];
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -313,34 +235,75 @@ document.addEventListener('DOMContentLoaded', () => {
     openedList.innerHTML = '';
 
     let hasOpened = false;
+    let hasUnopened = false;
 
+    // 1. Zeichne die Liste der bereits geöffneten Nachrichten
     secretsData.forEach((secret, index) => {
-      const isOpened = openedIndices.includes(index);
-
-      if (!isOpened) {
-        // Ungeöffnet: Zeige ein schwebendes Herz
-        const btn = document.createElement('button');
-        btn.className = 'heart-btn';
-        btn.innerHTML = '🩵'; 
-        btn.addEventListener('click', () => openSecret(index));
-        heartsContainer.appendChild(btn);
-      } else {
-        // Geöffnet: Zeige einfach nur ein kleines Herz in der Liste
+      if (openedIndices.includes(index)) {
         hasOpened = true;
         const item = document.createElement('div');
         item.className = 'opened-item';
-        // Nur ein Herz, kein Text!
         item.innerHTML = `<div style="text-align: center; font-size: 1.5rem;">💌</div>`; 
         item.addEventListener('click', () => openSecret(index));
         openedList.appendChild(item);
+      } else {
+        hasUnopened = true;
       }
     });
+
+    // 2. Zeichne den Herzhaufen
+    if (hasUnopened) {
+      const pileBtn = document.createElement('button');
+      pileBtn.className = 'heart-pile';
+      
+      // Generiere einen wilden Haufen aus 15 Herzen
+      for (let i = 0; i < 15; i++) {
+        const heart = document.createElement('span');
+        heart.className = 'pile-heart';
+        heart.innerHTML = '🩵'; // Emoji
+        
+        // Zufällige Position und Drehung für den chaotischen Look
+        const randomX = (Math.random() * 80) - 40; // -40 bis 40 px
+        const randomY = (Math.random() * 80) - 40; // -40 bis 40 px
+        const randomRotate = (Math.random() * 60) - 30; // -30 bis 30 deg
+        
+        heart.style.transform = `translate(${randomX}px, ${randomY}px) rotate(${randomRotate}deg)`;
+        // Abwechselnde Farben (CSS macht den Rest, aber wir setzen es hier für den Haufen)
+        if (i % 2 === 0) heart.style.color = '#a8d8ea'; // Babyblau
+        else heart.style.color = '#f4b6c2'; // Rosa
+        
+        pileBtn.appendChild(heart);
+      }
+
+      pileBtn.addEventListener('click', () => {
+        openRandomSecret();
+      });
+
+      heartsContainer.appendChild(pileBtn);
+    }
 
     if (hasOpened) {
       openedSecretsSection.style.display = 'block';
     } else {
       openedSecretsSection.style.display = 'none';
     }
+  }
+
+  // Sucht sich ein zufälliges, noch ungeöffnetes Geheimnis
+  function openRandomSecret() {
+    const openedIndices = getOpenedSecrets();
+    const unopenedIndices = [];
+
+    secretsData.forEach((_, index) => {
+      if (!openedIndices.includes(index)) {
+        unopenedIndices.push(index);
+      }
+    });
+
+    if (unopenedIndices.length === 0) return; // Nichts mehr übrig
+
+    const randomIndex = unopenedIndices[Math.floor(Math.random() * unopenedIndices.length)];
+    openSecret(randomIndex);
   }
 
   function openSecret(index) {
