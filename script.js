@@ -25,29 +25,32 @@ const letters = [
   }
 ];
 
-// NEU: My Day ist jetzt nach Tagen gruppiert!
 const myDayData = [
   {
     date: "November 19, 2026",
     entries: [
-      {
-        image: "IMG_20261119_063216.jpg", 
-        text: "outfit of the day, aber kennst du ja schon. ☕️"
-      },
-      {
-        image: "IMG_20261119_140747.jpg", 
-        text: "it's raining the whole time, thinking about how cozy it would be, the both of us cuddled up watching a movie while it's raining. 🌧️"
-      }
+      { image: "IMG_20261119_063216.jpg", text: "outfit of the day, aber kennst du ja schon. ☕️" },
+      { image: "IMG_20261119_140747.jpg", text: "it's raining the whole time, thinking about how cozy it would be, the both of us cuddled up watching a movie while it's raining. 🌧️" }
     ]
+  }
+];
+
+// NEU: Die Geheimnisse für die Herzen (For You)
+const secretsData = [
+  {
+    title: "Why I love you (Part 1)",
+    body: "The way you look at me when you think I don't notice. It makes me feel like the only person in the world.",
+    image: "" 
   },
   {
-    date: "November 20, 2026", // Beispiel für einen neuen Tag
-    entries: [
-      {
-        image: "cd919016dd9c92801ea180bd6e67a4c1.jpg", 
-        text: "Hab heute an dich gedacht, als ich das hier gesehen habe. 🥹"
-      }
-    ]
+    title: "A moment I missed you",
+    body: "I was walking home today and saw a couple holding hands. And suddenly the distance felt so heavy. I just wanted to hold yours.",
+    image: "IMG_20261119_140747.jpg"
+  },
+  {
+    title: "Just a thought",
+    body: "I am so incredibly proud of you. Never forget that.",
+    image: ""
   }
 ];
 
@@ -66,7 +69,6 @@ document.addEventListener('DOMContentLoaded', () => {
   function getOpenCounts() {
     try { return JSON.parse(localStorage.getItem('openCounts')) || {}; } catch { return {}; }
   }
-
   function incrementOpenCount(index) {
     const counts = getOpenCounts();
     counts[index] = (counts[index] || 0) + 1;
@@ -82,11 +84,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const wrap = document.createElement('div');
       wrap.className = 'envelope-wrap';
       const count = counts[i] || 0;
-      
-      let badgeHtml = '';
-      if (count > 0) {
-        badgeHtml = `<div class="read-badge">read ${count}x</div>`;
-      }
+      let badgeHtml = count > 0 ? `<div class="read-badge">read ${count}x</div>` : '';
 
       wrap.innerHTML = `
         <div class="envelope">
@@ -109,7 +107,7 @@ document.addEventListener('DOMContentLoaded', () => {
     setTimeout(() => {
       const letter = letters[i];
       letterTitle.textContent = letter.title;
-      letterBody.textContent = letter.body;
+      letterBody.innerHTML = letter.body.replace(/(https?:\/\/[^\s]+)/g, '<a href="$1" target="_blank" style="color: #9b6b7a; text-decoration: underline;">$1</a>');
       
       letterMedia.innerHTML = '';
       if (letter.media && letter.media.length > 0) {
@@ -125,6 +123,11 @@ document.addEventListener('DOMContentLoaded', () => {
             img.className = 'media-sticker';
             img.alt = "sticker";
             letterMedia.appendChild(img);
+          } else if (item.type === 'audio') {
+            const audioWrap = document.createElement('div');
+            audioWrap.className = 'media-audio';
+            audioWrap.innerHTML = `<audio controls src="${item.url}"></audio>`;
+            letterMedia.appendChild(audioWrap);
           }
         });
       }
@@ -132,25 +135,19 @@ document.addEventListener('DOMContentLoaded', () => {
       letterView.classList.add('open');
       incrementOpenCount(i);
       setTimeout(renderEnvelopes, 100); 
-
     }, 550);
 
-    setTimeout(() => {
-      wrap.classList.remove('opening');
-    }, 1200);
+    setTimeout(() => { wrap.classList.remove('opening'); }, 1200);
   }
 
   if (closeBtn && letterView) {
     closeBtn.addEventListener('click', () => letterView.classList.remove('open'));
-    letterView.addEventListener('click', (e) => {
-      if (e.target === letterView) letterView.classList.remove('open');
-    });
+    letterView.addEventListener('click', (e) => { if (e.target === letterView) letterView.classList.remove('open'); });
   }
-
   renderEnvelopes();
 
   // ==========================================
-  // MY DAY LOGIK (NEU)
+  // MY DAY LOGIK
   // ==========================================
   const daysList = document.getElementById('daysList');
   const dayView = document.getElementById('dayView');
@@ -161,20 +158,15 @@ document.addEventListener('DOMContentLoaded', () => {
   function renderDaysList() {
     if (!daysList) return;
     daysList.innerHTML = '';
-
     myDayData.forEach((day, index) => {
       const card = document.createElement('div');
       card.className = 'day-selector';
-      
-      // Zählt die Einträge für diesen Tag
       const count = day.entries.length;
       const countText = count === 1 ? '1 moment' : `${count} moments`;
-
       card.innerHTML = `
         <div class="day-selector-date">📅 ${day.date}</div>
         <div class="day-selector-count">${countText}</div>
       `;
-      
       card.addEventListener('click', () => openDayDetail(index));
       daysList.appendChild(card);
     });
@@ -183,36 +175,113 @@ document.addEventListener('DOMContentLoaded', () => {
   function openDayDetail(index) {
     if (!dayView) return;
     const day = myDayData[index];
-    
     dayDetailDate.textContent = day.date;
     dayDetailContent.innerHTML = '';
-
-    // Baut die Bilder und Texte für diesen Tag zusammen
     day.entries.forEach(entry => {
       const item = document.createElement('div');
       item.className = 'day-detail-item';
-      
-      let imgHtml = '';
-      if (entry.image) {
-        imgHtml = `<img src="${entry.image}" alt="My day image">`;
-      }
-
-      item.innerHTML = `
-        ${imgHtml}
-        <p>${entry.text}</p>
-      `;
+      let imgHtml = entry.image ? `<img src="${entry.image}" alt="My day image">` : '';
+      item.innerHTML = `${imgHtml}<p>${entry.text}</p>`;
       dayDetailContent.appendChild(item);
     });
-
     dayView.classList.add('open');
   }
 
   if (closeDayBtn && dayView) {
     closeDayBtn.addEventListener('click', () => dayView.classList.remove('open'));
-    dayView.addEventListener('click', (e) => {
-      if (e.target === dayView) dayView.classList.remove('open');
-    });
+    dayView.addEventListener('click', (e) => { if (e.target === dayView) dayView.classList.remove('open'); });
+  }
+  renderDaysList();
+
+  // ==========================================
+  // FOR YOU (HERZEN) LOGIK
+  // ==========================================
+  const heartsContainer = document.getElementById('heartsContainer');
+  const openedSecretsSection = document.getElementById('openedSecretsSection');
+  const openedList = document.getElementById('openedList');
+  const secretView = document.getElementById('secretView');
+  const secretBody = document.getElementById('secretBody');
+  const secretMedia = document.getElementById('secretMedia');
+  const closeSecretBtn = document.getElementById('closeSecretBtn');
+
+  // Holt den Status (welche Herzen schon offen sind) aus dem Speicher
+  function getOpenedSecrets() {
+    try { return JSON.parse(localStorage.getItem('openedSecrets')) || []; } catch { return []; }
   }
 
-  renderDaysList();
+  function saveOpenedSecret(index) {
+    const opened = getOpenedSecrets();
+    if (!opened.includes(index)) {
+      opened.push(index);
+      localStorage.setItem('openedSecrets', JSON.stringify(opened));
+    }
+  }
+
+  function renderSecrets() {
+    if (!heartsContainer || !openedList) return;
+    const openedIndices = getOpenedSecrets();
+    
+    heartsContainer.innerHTML = '';
+    openedList.innerHTML = '';
+
+    let hasOpened = false;
+
+    secretsData.forEach((secret, index) => {
+      const isOpened = openedIndices.includes(index);
+
+      if (!isOpened) {
+        // Wenn noch nicht geöffnet: Zeige ein schwebendes Herz
+        const btn = document.createElement('button');
+        btn.className = 'heart-btn';
+        btn.innerHTML = '🩵'; // Das Herz-Emoji (wird per CSS abwechselnd gefärbt)
+        btn.addEventListener('click', () => openSecret(index));
+        heartsContainer.appendChild(btn);
+      } else {
+        // Wenn schon geöffnet: Füge es zur Liste unten hinzu
+        hasOpened = true;
+        const item = document.createElement('div');
+        item.className = 'opened-item';
+        item.innerHTML = `<div class="opened-item-title">${secret.title}</div>`;
+        item.addEventListener('click', () => openSecret(index));
+        openedList.appendChild(item);
+      }
+    });
+
+    // Zeige die "Opened"-Sektion nur an, wenn es auch geöffnete gibt
+    if (hasOpened) {
+      openedSecretsSection.style.display = 'block';
+    } else {
+      openedSecretsSection.style.display = 'none';
+    }
+  }
+
+  function openSecret(index) {
+    if (!secretView) return;
+    const secret = secretsData[index];
+    
+    secretBody.textContent = secret.body;
+    secretMedia.innerHTML = '';
+    
+    if (secret.image) {
+      const img = document.createElement('img');
+      img.src = secret.image;
+      secretMedia.appendChild(img);
+    }
+
+    // Als geöffnet markieren
+    saveOpenedSecret(index);
+    
+    // Overlay anzeigen
+    secretView.classList.add('open');
+    
+    // Die Liste im Hintergrund aktualisieren (Herz verschwindet, landet unten)
+    renderSecrets();
+  }
+
+  if (closeSecretBtn && secretView) {
+    closeSecretBtn.addEventListener('click', () => secretView.classList.remove('open'));
+    secretView.addEventListener('click', (e) => { if (e.target === secretView) secretView.classList.remove('open'); });
+  }
+
+  renderSecrets();
 });
