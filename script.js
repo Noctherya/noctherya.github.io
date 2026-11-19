@@ -7,20 +7,16 @@ const letters = [
   {
     title: "you need a laugh",
     body: "okay, here's your official \"please laugh now\" letter:\n\nwhy can't programmers have relationships?\nbecause they always ask for a \"commit\" but never say \"yes\" (tot unlustig tu einfach so als hättest du gelacht).\n\nand if that didn't work: just think about my face when i am concentrating on something or you successfully ragebait me.  that's funny enough.\n\ni love you, you Mr. Ragebaiter (like seriously I love you).",
-    media: [
-      { type: "sticker", url: "cd919016dd9c92801ea180bd6e67a4c1.jpg" } 
-    ]
+    media: [{ type: "sticker", url: "cd919016dd9c92801ea180bd6e67a4c1.jpg" }]
   },
   {
     title: "you need a smile",
     body: "remember that day we first met? i think about it a lot. Actually I think about YOU 24/7 so don't you DARE say I'm not obsessed with you - because I am. Entirely. Your fault for being everything I ever wished for.\n\nand about the way how nervous we both were like the whole time, now I feel the safest and calmest when I'm with you. You're my safe place in human form and I couldn't be any happier.\n\ni hope this letter put a little smile on your face. you deserve to smile, always. Because you love my smile and I love yours so we're even.",
-    media: [
-      { type: "polaroid", url: "IMG_20261119_063230.jpg" } 
-    ]
+    media: [{ type: "polaroid", url: "IMG_20261119_063230.jpg" }]
   },
   {
     title: "you miss me",
-    body: "i miss you too. a lot.\n\nsometimes the distance is hard, but you know what? you're with me in every moment. in my thoughts, in my heart, in the song i'm listening to right now, like literally every song is somehow connected to you.\n\nthis letter is my little way of telling you: i'm here. even when i'm not physically with you.\n\ni'm counting the days until I see you again. You know that. and until then: open this letter as often as you want. it stays here for you. That's why I did this whole thing. Reread it as many times as you need to. Or call me. Or text me. Idc - I'll always answer if it's you, no matter what situation I'm in.\n\ni love you so so so much Darling.",
+    body: "i miss you too. a lot.\n\nsometimes the distance is hard, but you know what? you're with me in every moment. in my thoughts, in my heart, in the song i'm listening to right now, like literally every song is somehow connected to you.\n\nthis letter is my little way of telling you: i'm here. even when i'm not physically with you.\n\ni'm counting the days until i see you again. You know that. and until then: open this letter as often as you want. it stays here for you. That's why I did this whole thing. Reread it as many times as you need to. Or call me. Or text me. Idc - I'll always answer if it's you, no matter what situation I'm in.\n\ni love you so so so much Darling.",
     media: []
   }
 ];
@@ -35,7 +31,6 @@ const myDayData = [
   }
 ];
 
-// Die Geheimnisse (Deine Texte + die neuen Insecurities & Love Reasons)
 const secretsData = [
   { body: "The way you look at me when you think I don't notice. It makes me feel like the only person in the world.", image: "" },
   { body: "I was walking home today and saw a couple holding hands. And suddenly the distance felt so heavy. I just wanted to hold yours.", image: "IMG_20261119_140747.jpg" },
@@ -63,6 +58,11 @@ const secretsData = [
   { body: "silly but valid. I love your height. the way I have to look up at you", image: "" },
   { body: "I love that you make me feel like the most important person in the world. even if it's just through our calls. it matters to me", image: "" },
   { body: "I worry that I'm not enough for you. not pretty enough, not as pretty as your ex-girlfriends. that I'm not smart or funny enough..just not enough.", image: "" }
+];
+
+// NEU: Die Bilder für die Pinnwand
+const usData = [
+  "IMG_20261119_063230.jpg" // Ersetze das hier mit deinem ersten "Us"-Bild!
 ];
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -218,7 +218,6 @@ document.addEventListener('DOMContentLoaded', () => {
   function getOpenedSecrets() {
     try { return JSON.parse(localStorage.getItem('openedSecrets')) || []; } catch { return []; }
   }
-
   function saveOpenedSecret(index) {
     const opened = getOpenedSecrets();
     if (!opened.includes(index)) {
@@ -230,14 +229,11 @@ document.addEventListener('DOMContentLoaded', () => {
   function renderSecrets() {
     if (!heartsContainer || !openedList) return;
     const openedIndices = getOpenedSecrets();
-    
     heartsContainer.innerHTML = '';
     openedList.innerHTML = '';
-
     let hasOpened = false;
     let hasUnopened = false;
 
-    // 1. Zeichne die Liste der bereits geöffneten Nachrichten
     secretsData.forEach((secret, index) => {
       if (openedIndices.includes(index)) {
         hasOpened = true;
@@ -251,57 +247,36 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
 
-    // 2. Zeichne den Herzhaufen
     if (hasUnopened) {
       const pileBtn = document.createElement('button');
       pileBtn.className = 'heart-pile';
-      
-      // Generiere einen wilden Haufen aus 15 Herzen
       for (let i = 0; i < 15; i++) {
         const heart = document.createElement('span');
         heart.className = 'pile-heart';
-        heart.innerHTML = '🩵'; // Emoji
-        
-        // Zufällige Position und Drehung für den chaotischen Look
-        const randomX = (Math.random() * 80) - 40; // -40 bis 40 px
-        const randomY = (Math.random() * 80) - 40; // -40 bis 40 px
-        const randomRotate = (Math.random() * 60) - 30; // -30 bis 30 deg
-        
+        heart.innerHTML = '🩵';
+        const randomX = (Math.random() * 80) - 40;
+        const randomY = (Math.random() * 80) - 40;
+        const randomRotate = (Math.random() * 60) - 30;
         heart.style.transform = `translate(${randomX}px, ${randomY}px) rotate(${randomRotate}deg)`;
-        // Abwechselnde Farben (CSS macht den Rest, aber wir setzen es hier für den Haufen)
-        if (i % 2 === 0) heart.style.color = '#a8d8ea'; // Babyblau
-        else heart.style.color = '#f4b6c2'; // Rosa
-        
+        if (i % 2 === 0) heart.style.color = '#a8d8ea';
+        else heart.style.color = '#f4b6c2';
         pileBtn.appendChild(heart);
       }
-
-      pileBtn.addEventListener('click', () => {
-        openRandomSecret();
-      });
-
+      pileBtn.addEventListener('click', openRandomSecret);
       heartsContainer.appendChild(pileBtn);
     }
 
-    if (hasOpened) {
-      openedSecretsSection.style.display = 'block';
-    } else {
-      openedSecretsSection.style.display = 'none';
-    }
+    if (hasOpened) openedSecretsSection.style.display = 'block';
+    else openedSecretsSection.style.display = 'none';
   }
 
-  // Sucht sich ein zufälliges, noch ungeöffnetes Geheimnis
   function openRandomSecret() {
     const openedIndices = getOpenedSecrets();
     const unopenedIndices = [];
-
     secretsData.forEach((_, index) => {
-      if (!openedIndices.includes(index)) {
-        unopenedIndices.push(index);
-      }
+      if (!openedIndices.includes(index)) unopenedIndices.push(index);
     });
-
-    if (unopenedIndices.length === 0) return; // Nichts mehr übrig
-
+    if (unopenedIndices.length === 0) return;
     const randomIndex = unopenedIndices[Math.floor(Math.random() * unopenedIndices.length)];
     openSecret(randomIndex);
   }
@@ -309,16 +284,13 @@ document.addEventListener('DOMContentLoaded', () => {
   function openSecret(index) {
     if (!secretView) return;
     const secret = secretsData[index];
-    
     secretBody.textContent = secret.body;
     secretMedia.innerHTML = '';
-    
     if (secret.image) {
       const img = document.createElement('img');
       img.src = secret.image;
       secretMedia.appendChild(img);
     }
-
     saveOpenedSecret(index);
     secretView.classList.add('open');
     renderSecrets();
@@ -328,6 +300,46 @@ document.addEventListener('DOMContentLoaded', () => {
     closeSecretBtn.addEventListener('click', () => secretView.classList.remove('open'));
     secretView.addEventListener('click', (e) => { if (e.target === secretView) secretView.classList.remove('open'); });
   }
-
   renderSecrets();
+
+  // ==========================================
+  // US (PINNWAND) LOGIK
+  // ==========================================
+  const pinboard = document.getElementById('pinboard');
+  const imageView = document.getElementById('imageView');
+  const enlargedImage = document.getElementById('enlargedImage');
+  const closeImageBtn = document.getElementById('closeImageBtn');
+
+  function renderPinboard() {
+    if (!pinboard) return;
+    pinboard.innerHTML = '';
+
+    usData.forEach((imgSrc, index) => {
+      const photo = document.createElement('div');
+      photo.className = 'pinned-photo';
+      
+      // Zufällige Drehung für den Scrapbook-Look
+      const randomRotation = (Math.random() * 20) - 10; // Zwischen -10 und +10 Grad
+      photo.style.transform = `rotate(${randomRotation}deg)`;
+
+      photo.innerHTML = `
+        <div class="pin"></div>
+        <img src="${imgSrc}" alt="Us">
+      `;
+
+      photo.addEventListener('click', () => {
+        enlargedImage.src = imgSrc;
+        imageView.classList.add('open');
+      });
+
+      pinboard.appendChild(photo);
+    });
+  }
+
+  if (closeImageBtn && imageView) {
+    closeImageBtn.addEventListener('click', () => imageView.classList.remove('open'));
+    imageView.addEventListener('click', (e) => { if (e.target === imageView) imageView.classList.remove('open'); });
+  }
+
+  renderPinboard();
 });
