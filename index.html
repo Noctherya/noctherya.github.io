@@ -12,30 +12,60 @@
 <body>
 
 <div class="app">
-  <h1>for you 💌</h1>
-  <p class="subtitle">a few letters from me</p>
+  
+  <!-- Die Navigations-Leiste -->
+  <div class="nav-tabs">
+    <button class="nav-btn active" onclick="switchTab('letters')">💌 Letters</button>
+    <button class="nav-btn" onclick="switchTab('myday')">☀️ My Day</button>
+  </div>
 
-  <div class="envelopes" id="envelopes"></div>
+  <!-- SEITE 1: Die Briefe -->
+  <div id="page-letters" class="page active">
+    <h1>for you 💌</h1>
+    <p class="subtitle">a few letters from me</p>
+    <div class="envelopes" id="envelopes"></div>
+  </div>
 
+  <!-- SEITE 2: My Day -->
+  <div id="page-myday" class="page">
+    <h1>my day ☀️</h1>
+    <p class="subtitle">little moments i wish you were here for</p>
+    
+    <!-- Hier werden die Tage per JavaScript eingefügt -->
+    <div class="timeline" id="timeline"></div>
+  </div>
+
+  <!-- Das Overlay für den geöffneten Brief -->
   <div class="letter-view" id="letterView">
     <div class="letter-card">
       <button class="close-btn" id="closeBtn">✕</button>
       <h2 id="letterTitle"></h2>
-      
       <div class="letter-media" id="letterMedia"></div>
-      
       <div class="letter-body" id="letterBody"></div>
       <div class="signature">— me 💙</div>
     </div>
   </div>
+
 </div>
 
-    <script src="script.js"></script>
+  <script src="script.js"></script>
   <script>
     if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('/sw.js')
-        .then(reg => console.log('Service Worker registriert!'))
-        .catch(err => console.log('Service Worker Fehler:', err));
+      navigator.serviceWorker.register('/sw.js');
+    }
+
+    // Tab-Wechsel Logik
+    function switchTab(tabName) {
+      document.querySelectorAll('.page').forEach(page => page.classList.remove('active'));
+      document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active'));
+
+      if (tabName === 'letters') {
+        document.getElementById('page-letters').classList.add('active');
+        document.querySelectorAll('.nav-btn')[0].classList.add('active');
+      } else if (tabName === 'myday') {
+        document.getElementById('page-myday').classList.add('active');
+        document.querySelectorAll('.nav-btn')[1].classList.add('active');
+      }
     }
   </script>
 </body>
