@@ -1,11 +1,10 @@
-const CACHE_NAME = 'loveu-app-v2'; // Wir ändern die Version auf v2, damit alte Caches gelöscht werden
+const CACHE_NAME = 'loveu-app-v3';
 
 self.addEventListener('install', (e) => {
   self.skipWaiting();
 });
 
 self.addEventListener('activate', (e) => {
-  // Hier löschen wir alle alten Caches, wenn eine neue Version installiert wird
   e.waitUntil(
     caches.keys().then((cacheNames) => {
       return Promise.all(
@@ -20,11 +19,19 @@ self.addEventListener('activate', (e) => {
 });
 
 self.addEventListener('fetch', (e) => {
-  // "Network First": Versuche immer, die Datei aus dem Internet zu laden. 
-  // Wenn das nicht klappt (z.B. kein Internet), nimm die gespeicherte Version.
+  // "Network First": Immer zuerst das Internet fragen, dann den Cache
   e.respondWith(
-    fetch(e.request).catch(() => {
-      return caches.match(e.request);
-    })
+    fetch(e.request)
+      .then((response) => {
+        // Wenn wir eine Antwort aus dem Internet bekommen, speichern wir sie im Cache
+        return caches.open(CACHE_NAME).then((cache) => {
+          cache.put(e.request, response.clone());
+          return response;
+        });
+      })
+      .catch(() => {
+        // Wenn kein Internet da ist, nimm den Cache
+        return caches.match(e.request);
+      })
   );
 });
