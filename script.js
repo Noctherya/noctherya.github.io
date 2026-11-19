@@ -60,9 +60,8 @@ const secretsData = [
   { body: "I worry that I'm not enough for you. not pretty enough, not as pretty as your ex-girlfriends. that I'm not smart or funny enough..just not enough.", image: "" }
 ];
 
-// NEU: Die Bilder für die Pinnwand
 const usData = [
-  "IMG_20261119_063230.jpg" // Ersetze das hier mit deinem ersten "Us"-Bild!
+  "IMG_20261119_063230.jpg" 
 ];
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -318,8 +317,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const photo = document.createElement('div');
       photo.className = 'pinned-photo';
       
-      // Zufällige Drehung für den Scrapbook-Look
-      const randomRotation = (Math.random() * 20) - 10; // Zwischen -10 und +10 Grad
+      const randomRotation = (Math.random() * 20) - 10; 
       photo.style.transform = `rotate(${randomRotation}deg)`;
 
       photo.innerHTML = `
