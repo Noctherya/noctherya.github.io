@@ -35,7 +35,7 @@ const myDayData = [
   }
 ];
 
-// NEU: Die Geheimnisse für die Herzen (For You)
+// Die Geheimnisse für die Herzen (Ganz ohne Titel!)
 const secretsData = [
   {
     body: "The way you look at me when you think I don't notice. It makes me feel like the only person in the world.",
@@ -201,7 +201,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const secretMedia = document.getElementById('secretMedia');
   const closeSecretBtn = document.getElementById('closeSecretBtn');
 
-  // Holt den Status (welche Herzen schon offen sind) aus dem Speicher
   function getOpenedSecrets() {
     try { return JSON.parse(localStorage.getItem('openedSecrets')) || []; } catch { return []; }
   }
@@ -227,24 +226,24 @@ document.addEventListener('DOMContentLoaded', () => {
       const isOpened = openedIndices.includes(index);
 
       if (!isOpened) {
-        // Wenn noch nicht geöffnet: Zeige ein schwebendes Herz
+        // Ungeöffnet: Zeige ein schwebendes Herz
         const btn = document.createElement('button');
         btn.className = 'heart-btn';
-        btn.innerHTML = '🩵'; // Das Herz-Emoji (wird per CSS abwechselnd gefärbt)
+        btn.innerHTML = '🩵'; 
         btn.addEventListener('click', () => openSecret(index));
         heartsContainer.appendChild(btn);
       } else {
-        // Wenn schon geöffnet: Füge es zur Liste unten hinzu
+        // Geöffnet: Zeige einfach nur ein kleines Herz in der Liste
         hasOpened = true;
         const item = document.createElement('div');
         item.className = 'opened-item';
-        item.innerHTML = `<div class="opened-item-title">${secret.title}</div>`;
+        // Nur ein Herz, kein Text!
+        item.innerHTML = `<div style="text-align: center; font-size: 1.5rem;">💌</div>`; 
         item.addEventListener('click', () => openSecret(index));
         openedList.appendChild(item);
       }
     });
 
-    // Zeige die "Opened"-Sektion nur an, wenn es auch geöffnete gibt
     if (hasOpened) {
       openedSecretsSection.style.display = 'block';
     } else {
@@ -265,13 +264,8 @@ document.addEventListener('DOMContentLoaded', () => {
       secretMedia.appendChild(img);
     }
 
-    // Als geöffnet markieren
     saveOpenedSecret(index);
-    
-    // Overlay anzeigen
     secretView.classList.add('open');
-    
-    // Die Liste im Hintergrund aktualisieren (Herz verschwindet, landet unten)
     renderSecrets();
   }
 
