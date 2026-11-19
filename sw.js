@@ -1,4 +1,4 @@
-const CACHE_NAME = 'loveu-app-v21';
+const CACHE_NAME = 'loveu-app-v10';
 
 self.addEventListener('install', (e) => {
   self.skipWaiting();
@@ -23,14 +23,12 @@ self.addEventListener('fetch', (e) => {
   e.respondWith(
     fetch(e.request)
       .then((response) => {
-        // Wenn wir eine Antwort aus dem Internet bekommen, speichern wir sie im Cache
         return caches.open(CACHE_NAME).then((cache) => {
           cache.put(e.request, response.clone());
           return response;
         });
       })
       .catch(() => {
-        // Wenn kein Internet da ist, nimm den Cache
         return caches.match(e.request);
       })
   );
