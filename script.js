@@ -146,6 +146,7 @@ document.addEventListener('DOMContentLoaded', () => {
           <div class="paper">💌</div>
           <div class="flap"></div>
           <div class="pocket"></div>
+          <div class="seal">🐧</div>
           <div class="envelope-title">${letter.title}</div>
           ${badgeHtml}
         </div>
