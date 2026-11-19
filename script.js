@@ -38,13 +38,8 @@ const myDayEntries = [
   }
 ];
 
-// ==========================================
-// LOGIK (Hier musst du nichts mehr ändern)
-// ==========================================
-
 document.addEventListener('DOMContentLoaded', () => {
   
-  // --- BRIEFE LOGIK ---
   const envelopeContainer = document.getElementById('envelopes');
   const letterView = document.getElementById('letterView');
   const letterTitle = document.getElementById('letterTitle');
@@ -52,34 +47,41 @@ document.addEventListener('DOMContentLoaded', () => {
   const letterMedia = document.getElementById('letterMedia');
   const closeBtn = document.getElementById('closeBtn');
 
-  function getReadStatus() {
-    try { return JSON.parse(localStorage.getItem('readLetters') || '[]'); }
-    catch { return []; }
+  // NEU: Wir speichern jetzt auch die Anzahl der Öffnungen
+  function getOpenCounts() {
+    try { return JSON.parse(localStorage.getItem('openCounts') || '{}'); }
+    catch { return {}; }
   }
 
-  function saveReadStatus(index) {
-    const read = getReadStatus();
-    if (!read.includes(index)) {
-      read.push(index);
-      localStorage.setItem('readLetters', JSON.stringify(read));
-    }
+  function incrementOpenCount(index) {
+    const counts = getOpenCounts();
+    counts[index] = (counts[index] || 0) + 1;
+    localStorage.setItem('openCounts', JSON.stringify(counts));
   }
 
   function renderEnvelopes() {
     if (!envelopeContainer) return;
-    const read = getReadStatus();
+    const counts = getOpenCounts();
     envelopeContainer.innerHTML = '';
     
     letters.forEach((letter, i) => {
       const wrap = document.createElement('div');
       wrap.className = 'envelope-wrap';
+      const count = counts[i] || 0;
+      
+      // Hier bauen wir den Counter ein, wenn der Brief schon geöffnet wurde
+      let badgeHtml = '';
+      if (count > 0) {
+        badgeHtml = `<div class="read-badge">read ${count > 1 ? count + 'x' : ''}</div>`;
+      }
+
       wrap.innerHTML = `
         <div class="envelope">
           <div class="paper">💌</div>
           <div class="flap"></div>
           <div class="pocket"></div>
           <div class="envelope-title">${letter.title}</div>
-          ${read.includes(i) ? '<div class="read-badge">read</div>' : ''}
+          ${badgeHtml}
         </div>
       `;
       wrap.addEventListener('click', () => openLetter(i, wrap));
@@ -115,12 +117,12 @@ document.addEventListener('DOMContentLoaded', () => {
       }
 
       letterView.classList.add('open');
-      saveReadStatus(i);
+      incrementOpenCount(i); // Zähler erhöhen
     }, 550);
 
     setTimeout(() => {
       wrap.classList.remove('opening');
-      renderEnvelopes();
+      renderEnvelopes(); // Envelopes neu zeichnen, damit der neue Zähler angezeigt wird
     }, 1200);
   }
 
