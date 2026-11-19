@@ -36,6 +36,7 @@ h1 {
   justify-content: center;
   gap: 10px;
   margin-bottom: 25px;
+  flex-wrap: wrap; /* Falls die Buttons auf kleinen Handys umbrechen müssen */
 }
 
 .nav-btn {
@@ -44,10 +45,10 @@ h1 {
   background: transparent;
   border: 1px solid #c9a9b4;
   color: #9b6b7a;
-  padding: 10px 20px;
-  border-radius: 30px; /* Schön rund */
+  padding: 8px 15px;
+  border-radius: 30px; 
   font-family: 'Cormorant Garamond', serif;
-  font-size: 1.1rem;
+  font-size: 1rem;
   cursor: pointer;
   transition: all 0.3s ease;
   outline: none;
@@ -140,12 +141,13 @@ h1 {
   font-family: 'Cormorant Garamond', serif; font-size: 0.7rem; color: #fff; z-index: 5;
   background: #9b6b7a; padding: 2px 9px; border-radius: 10px;
   transform: rotate(2deg); box-shadow: 0 1px 3px rgba(120, 90, 100, 0.3);
+  transition: all 0.3s ease;
 }
 
 .envelope-wrap.opening .flap { transform: rotateX(180deg); }
 .envelope-wrap.opening .paper { transform: translateY(-45px); }
 
-/* --- Geöffneter Brief --- */
+/* --- Geöffneter Brief (Overlay) --- */
 .letter-view {
   display: none; position: fixed; inset: 0;
   background: rgba(247, 240, 232, 0.94);
@@ -190,68 +192,11 @@ h1 {
 .media-polaroid::after { content: "💙"; position: absolute; bottom: 8px; right: 12px; font-size: 1.1rem; }
 .media-sticker { width: 100px; mix-blend-mode: multiply; transform: rotate(8deg); filter: drop-shadow(1px 2px 2px rgba(0,0,0,0.1)); }
 
-/* --- My Day Timeline --- */
-.timeline {
-  display: flex;
-  flex-direction: column;
-  gap: 30px;
-  margin-top: 10px;
-  text-align: left;
-  padding-bottom: 40px;
-}
+/* Audio Player */
+.media-audio { width: 100%; margin: 15px 0; display: flex; justify-content: center; }
+.media-audio audio { width: 100%; max-width: 300px; outline: none; border-radius: 30px; background: #fdfaf2; box-shadow: 0 2px 8px rgba(155, 107, 122, 0.15); }
 
-.day-card {
-  position: relative;
-  background: #fff;
-  border: 1px solid #e8d5dc;
-  border-radius: 12px;
-  padding: 18px;
-  box-shadow: 0 6px 16px rgba(176, 128, 144, 0.12);
-  transform: rotate(-0.5deg);
-}
-
-.day-card:nth-child(even) {
-  transform: rotate(0.8deg);
-}
-
-.day-date {
-  font-family: 'Caveat', cursive;
-  font-size: 1.4rem;
-  color: #9b6b7a;
-  margin-bottom: 12px;
-  border-bottom: 1px dashed #e8d5dc;
-  padding-bottom: 8px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.day-image {
-  width: 100%;
-  border-radius: 8px;
-  margin-bottom: 15px;
-  border: 4px solid #fdfaf2;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-}
-
-.day-text {
-  font-family: 'Caveat', cursive;
-  font-size: 1.4rem;
-  color: #4a4048;
-  line-height: 1.5;
-  white-space: pre-line;
-}
-
-/* Update für den Read-Counter */
-.read-badge {
-  position: absolute; top: 8px; right: 12px;
-  font-family: 'Cormorant Garamond', serif; font-size: 0.7rem; color: #fff; z-index: 5;
-  background: #9b6b7a; padding: 2px 9px; border-radius: 10px;
-  transform: rotate(2deg); box-shadow: 0 1px 3px rgba(120, 90, 100, 0.3);
-  transition: all 0.3s ease;
-}
-
-/* --- NEU: My Day Übersicht (Datums-Karten) --- */
+/* --- My Day Übersicht (Datums-Karten) --- */
 .days-list {
   display: flex;
   flex-direction: column;
@@ -301,88 +246,59 @@ h1 {
   font-size: 1.2rem;
 }
 
-/* --- NEU: My Day Detail Ansicht (wenn man auf ein Datum klickt) --- */
-.day-detail-card {
-  max-height: 85vh;
-}
+/* --- My Day Detail Ansicht --- */
+.day-detail-card { max-height: 85vh; }
+.day-detail-content { display: flex; flex-direction: column; gap: 20px; margin-top: 15px; }
+.day-detail-item { background: #fdfaf2; border: 1px solid #e8d5dc; border-radius: 8px; padding: 12px; text-align: left; }
+.day-detail-item img { width: 100%; border-radius: 6px; margin-bottom: 10px; border: 2px solid #fff; }
+.day-detail-item p { font-family: 'Caveat', cursive; font-size: 1.35rem; color: #4a4048; line-height: 1.4; }
 
-.day-detail-content {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  margin-top: 15px;
-}
-
-.day-detail-item {
-  background: #fdfaf2;
-  border: 1px solid #e8d5dc;
-  border-radius: 8px;
-  padding: 12px;
-  text-align: left;
-}
-
-.day-detail-item img {
-  width: 100%;
-  border-radius: 6px;
-  margin-bottom: 10px;
-  border: 2px solid #fff;
-}
-
-.day-detail-item p {
-  font-family: 'Caveat', cursive;
-  font-size: 1.35rem;
-  color: #4a4048;
-  line-height: 1.4;
-}
-
-/* --- NEU: For You (Herzen & Geheimnisse) --- */
-.secrets-page-theme {
-  background: transparent; /* Das App-Design bleibt */
-}
-
+/* --- NEU: For You (Herzhaufen) --- */
 .hearts-container {
   display: flex;
-  flex-wrap: wrap;
   justify-content: center;
-  gap: 15px;
-  margin-top: 20px;
-  padding: 20px;
+  align-items: center;
+  margin: 20px auto;
 }
 
-/* Die kleinen Herzen */
-.heart-btn {
-  background: none;
+.heart-pile {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  margin: 20px auto;
+  background: transparent;
   border: none;
-  font-size: 2.5rem; /* Größe der Herzen */
   cursor: pointer;
-  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.2s;
-  filter: drop-shadow(0 4px 6px rgba(155, 107, 122, 0.2));
-  animation: float 3s ease-in-out infinite;
+  outline: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.2s ease;
 }
 
-/* Abwechselnde Verzögerung für den Schwebe-Effekt */
-.heart-btn:nth-child(even) { animation-delay: 1.5s; }
-.heart-btn:nth-child(3n) { animation-delay: 0.8s; }
-
-.heart-btn:hover {
-  transform: scale(1.2) rotate(10deg);
+.heart-pile:hover {
+  transform: scale(1.05);
 }
 
-.heart-btn:active {
-  transform: scale(0.9);
+.heart-pile:active {
+  transform: scale(0.95);
 }
 
-/* Die Farbe der Herzen (Babyblau & Rosa) */
-.heart-btn:nth-child(odd) { color: #a8d8ea; } /* Babyblau */
-.heart-btn:nth-child(even) { color: #f4b6c2; } /* Rosa */
-
-@keyframes float {
-  0% { transform: translateY(0px); }
-  50% { transform: translateY(-8px); }
-  100% { transform: translateY(0px); }
+.pile-heart {
+  position: absolute;
+  font-size: 2.2rem;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.15));
+  animation: floatPile 3s ease-in-out infinite;
+  pointer-events: none;
 }
 
-/* Unterkategorie für geöffnete Nachrichten */
+@keyframes floatPile {
+  0% { margin-top: 0px; }
+  50% { margin-top: -5px; }
+  100% { margin-top: 0px; }
+}
+
+/* Geöffnete Liste (unten) */
 .opened-title {
   font-family: 'Caveat', cursive;
   font-size: 1.8rem;
@@ -405,7 +321,7 @@ h1 {
   border: 1px solid #e8d5dc;
   border-radius: 12px;
   padding: 15px;
-  text-align: left;
+  text-align: center;
   box-shadow: 0 4px 12px rgba(176, 128, 144, 0.1);
   cursor: pointer;
   transition: transform 0.2s;
@@ -415,16 +331,9 @@ h1 {
   transform: translateY(-2px);
 }
 
-.opened-item-title {
-  font-family: 'Caveat', cursive;
-  font-size: 1.4rem;
-  color: #9b6b7a;
-  margin-bottom: 5px;
-}
-
 /* Das Popup für die Herzen */
 .secret-popup-card {
-  background: linear-gradient(135deg, #fdfaf2 0%, #e8f4f8 100%); /* Rosa zu Babyblau */
+  background: linear-gradient(135deg, #fdfaf2 0%, #e8f4f8 100%);
   border: 2px solid #a8d8ea;
   box-shadow: 0 15px 50px rgba(168, 216, 234, 0.4), inset 0 0 60px rgba(244, 182, 194, 0.2);
   text-align: center;
