@@ -25,26 +25,37 @@ const letters = [
   }
 ];
 
-const myDayEntries = [
+// NEU: My Day ist jetzt nach Tagen gruppiert!
+const myDayData = [
   {
     date: "November 19, 2026",
-    image: "IMG_20261119_063216.jpg", 
-    text: "outfit of the day, aber kennst du ja schon. ☕️"
+    entries: [
+      {
+        image: "IMG_20261119_063216.jpg", 
+        text: "outfit of the day, aber kennst du ja schon. ☕️"
+      },
+      {
+        image: "IMG_20261119_140747.jpg", 
+        text: "it's raining the whole time, thinking about how cozy it would be, the both of us cuddled up watching a movie while it's raining. 🌧️"
+      }
+    ]
   },
   {
-    date: "November 19, 2026",
-    image: "IMG_20261119_140747.jpg", 
-    text: "it's raining the whole time, thinking about how cozy it would be, the both of us cuddled up watching a movie while it's raining. 🌧️"
+    date: "November 20, 2026", // Beispiel für einen neuen Tag
+    entries: [
+      {
+        image: "cd919016dd9c92801ea180bd6e67a4c1.jpg", 
+        text: "Hab heute an dich gedacht, als ich das hier gesehen habe. 🥹"
+      }
+    ]
   }
 ];
 
-// ==========================================
-// LOGIK (Hier musst du nichts mehr ändern)
-// ==========================================
-
 document.addEventListener('DOMContentLoaded', () => {
   
-  // --- BRIEFE LOGIK ---
+  // ==========================================
+  // BRIEFE LOGIK
+  // ==========================================
   const envelopeContainer = document.getElementById('envelopes');
   const letterView = document.getElementById('letterView');
   const letterTitle = document.getElementById('letterTitle');
@@ -52,16 +63,10 @@ document.addEventListener('DOMContentLoaded', () => {
   const letterMedia = document.getElementById('letterMedia');
   const closeBtn = document.getElementById('closeBtn');
 
-  // Holt die Zählerstände aus dem Handy-Speicher
   function getOpenCounts() {
-    try { 
-      return JSON.parse(localStorage.getItem('openCounts')) || {}; 
-    } catch { 
-      return {}; 
-    }
+    try { return JSON.parse(localStorage.getItem('openCounts')) || {}; } catch { return {}; }
   }
 
-  // Erhöht den Zähler um 1
   function incrementOpenCount(index) {
     const counts = getOpenCounts();
     counts[index] = (counts[index] || 0) + 1;
@@ -125,8 +130,6 @@ document.addEventListener('DOMContentLoaded', () => {
       }
 
       letterView.classList.add('open');
-      
-      // WICHTIG: Zähler erhöhen und Briefe neu zeichnen, damit das Badge sofort aktualisiert wird
       incrementOpenCount(i);
       setTimeout(renderEnvelopes, 100); 
 
@@ -146,24 +149,70 @@ document.addEventListener('DOMContentLoaded', () => {
 
   renderEnvelopes();
 
-  // --- MY DAY LOGIK ---
-  const timelineContainer = document.getElementById('timeline');
-  
-  function renderTimeline() {
-    if (!timelineContainer) return;
-    timelineContainer.innerHTML = '';
-    
-    myDayEntries.forEach(entry => {
+  // ==========================================
+  // MY DAY LOGIK (NEU)
+  // ==========================================
+  const daysList = document.getElementById('daysList');
+  const dayView = document.getElementById('dayView');
+  const dayDetailDate = document.getElementById('dayDetailDate');
+  const dayDetailContent = document.getElementById('dayDetailContent');
+  const closeDayBtn = document.getElementById('closeDayBtn');
+
+  function renderDaysList() {
+    if (!daysList) return;
+    daysList.innerHTML = '';
+
+    myDayData.forEach((day, index) => {
       const card = document.createElement('div');
-      card.className = 'day-card';
+      card.className = 'day-selector';
+      
+      // Zählt die Einträge für diesen Tag
+      const count = day.entries.length;
+      const countText = count === 1 ? '1 moment' : `${count} moments`;
+
       card.innerHTML = `
-        <div class="day-date">📅 ${entry.date}</div>
-        <img src="${entry.image}" alt="My day" class="day-image">
-        <div class="day-text">${entry.text}</div>
+        <div class="day-selector-date">📅 ${day.date}</div>
+        <div class="day-selector-count">${countText}</div>
       `;
-      timelineContainer.appendChild(card);
+      
+      card.addEventListener('click', () => openDayDetail(index));
+      daysList.appendChild(card);
     });
   }
 
-  renderTimeline();
+  function openDayDetail(index) {
+    if (!dayView) return;
+    const day = myDayData[index];
+    
+    dayDetailDate.textContent = day.date;
+    dayDetailContent.innerHTML = '';
+
+    // Baut die Bilder und Texte für diesen Tag zusammen
+    day.entries.forEach(entry => {
+      const item = document.createElement('div');
+      item.className = 'day-detail-item';
+      
+      let imgHtml = '';
+      if (entry.image) {
+        imgHtml = `<img src="${entry.image}" alt="My day image">`;
+      }
+
+      item.innerHTML = `
+        ${imgHtml}
+        <p>${entry.text}</p>
+      `;
+      dayDetailContent.appendChild(item);
+    });
+
+    dayView.classList.add('open');
+  }
+
+  if (closeDayBtn && dayView) {
+    closeDayBtn.addEventListener('click', () => dayView.classList.remove('open'));
+    dayView.addEventListener('click', (e) => {
+      if (e.target === dayView) dayView.classList.remove('open');
+    });
+  }
+
+  renderDaysList();
 });
