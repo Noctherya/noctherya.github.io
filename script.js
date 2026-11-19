@@ -111,14 +111,14 @@ renderEnvelopes();
 // --- NEU: Daten für My Day ---
 const myDayEntries = [
   {
-    date: "November 18, 2026",
+    date: "November 19, 2026",
     image: "IMG_20261119_063216.jpg", // Der Name deines Bildes, das du hochgeladen hast
     text: "outfit of the day, aber kennst du ja schon. ☕️"
   },
   {
     date: "November 19, 2026",
-    image: "DEIN_BILD_LINK_HIER.jpg", 
-    text: "the sky looked so pretty today. i took a picture so you could see it too. miss you. 🌅"
+    image: "IMG_20261119_140747.jpg", 
+    text: "it's raining the whole time, ja thinking about how cozy it would be, the both of us cuddled up watching a movie while it's raining. 🌧️"
   }
 ];
 
