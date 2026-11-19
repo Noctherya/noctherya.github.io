@@ -15,7 +15,7 @@ const letters = [
     title: "you need a smile",
     body: "remember that day we [add your favorite memory here]? i think about it a lot.\n\nand about the way you laughed when [add something cute here].\n\ni hope this letter put a little smile on your face. you deserve to smile, always.",
     media: [
-      { type: "polaroid", url: "https://i.postimg.cc/DEIN-LINK-HIER/selfie.jpg" } 
+      { type: "polaroid", url: "IMG_20261119_063230.jpg" } 
     ]
   },
   {
