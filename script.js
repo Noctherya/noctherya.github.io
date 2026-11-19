@@ -38,17 +38,14 @@ const myDayData = [
 // NEU: Die Geheimnisse für die Herzen (For You)
 const secretsData = [
   {
-    title: "Why I love you (Part 1)",
     body: "The way you look at me when you think I don't notice. It makes me feel like the only person in the world.",
     image: "" 
   },
   {
-    title: "A moment I missed you",
     body: "I was walking home today and saw a couple holding hands. And suddenly the distance felt so heavy. I just wanted to hold yours.",
     image: "IMG_20261119_140747.jpg"
   },
   {
-    title: "Just a thought",
     body: "I am so incredibly proud of you. Never forget that.",
     image: ""
   }
