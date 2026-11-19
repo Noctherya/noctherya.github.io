@@ -25,94 +25,10 @@ const letters = [
   }
 ];
 
-const envelopeContainer = document.getElementById('envelopes');
-const letterView = document.getElementById('letterView');
-const letterTitle = document.getElementById('letterTitle');
-const letterBody = document.getElementById('letterBody');
-const letterMedia = document.getElementById('letterMedia');
-const closeBtn = document.getElementById('closeBtn');
-
-function getReadStatus() {
-  try { return JSON.parse(localStorage.getItem('readLetters') || '[]'); }
-  catch { return []; }
-}
-
-function saveReadStatus(index) {
-  const read = getReadStatus();
-  if (!read.includes(index)) {
-    read.push(index);
-    localStorage.setItem('readLetters', JSON.stringify(read));
-  }
-}
-
-function renderEnvelopes() {
-  const read = getReadStatus();
-  envelopeContainer.innerHTML = '';
-  letters.forEach((letter, i) => {
-    const wrap = document.createElement('div');
-    wrap.className = 'envelope-wrap';
-    wrap.innerHTML = `
-      <div class="envelope">
-        <div class="paper">💌</div>
-        <div class="flap"></div>
-        <div class="pocket"></div>
-        <div class="envelope-title">${letter.title}</div>
-        ${read.includes(i) ? '<div class="read-badge">read</div>' : ''}
-      </div>
-    `;
-    wrap.addEventListener('click', () => openLetter(i, wrap));
-    envelopeContainer.appendChild(wrap);
-  });
-}
-
-function openLetter(i, wrap) {
-  wrap.classList.add('opening');
-
-  setTimeout(() => {
-    const letter = letters[i];
-    letterTitle.textContent = letter.title;
-    letterBody.textContent = letter.body;
-    
-    letterMedia.innerHTML = '';
-    if (letter.media && letter.media.length > 0) {
-      letter.media.forEach(item => {
-        if (item.type === 'polaroid') {
-          const imgWrap = document.createElement('div');
-          imgWrap.className = 'media-polaroid';
-          imgWrap.innerHTML = `<img src="${item.url}" alt="photo">`;
-          letterMedia.appendChild(imgWrap);
-        } else if (item.type === 'sticker') {
-          const img = document.createElement('img');
-          img.src = item.url;
-          img.className = 'media-sticker';
-          img.alt = "sticker";
-          letterMedia.appendChild(img);
-        }
-      });
-    }
-
-    letterView.classList.add('open');
-    saveReadStatus(i);
-  }, 550);
-
-  setTimeout(() => {
-    wrap.classList.remove('opening');
-    renderEnvelopes();
-  }, 1200);
-}
-
-closeBtn.addEventListener('click', () => letterView.classList.remove('open'));
-letterView.addEventListener('click', (e) => {
-  if (e.target === letterView) letterView.classList.remove('open');
-});
-
-renderEnvelopes();
-
-// --- NEU: Daten für My Day ---
 const myDayEntries = [
   {
     date: "November 19, 2026",
-    image: "IMG_20261119_063216.jpg", // Der Name deines Bildes, das du hochgeladen hast
+    image: "IMG_20261119_063216.jpg", 
     text: "outfit of the day, aber kennst du ja schon. ☕️"
   },
   {
@@ -122,24 +38,119 @@ const myDayEntries = [
   }
 ];
 
-// Funktion, um die Timeline aufzubauen
-function renderTimeline() {
-  const timelineContainer = document.getElementById('timeline');
-  if (!timelineContainer) return; // Falls das Element noch nicht da ist
+// ==========================================
+// LOGIK (Hier musst du nichts mehr ändern)
+// ==========================================
 
-  timelineContainer.innerHTML = '';
+document.addEventListener('DOMContentLoaded', () => {
   
-  myDayEntries.forEach(entry => {
-    const card = document.createElement('div');
-    card.className = 'day-card';
-    card.innerHTML = `
-      <div class="day-date">📅 ${entry.date}</div>
-      <img src="${entry.image}" alt="My day" class="day-image">
-      <div class="day-text">${entry.text}</div>
-    `;
-    timelineContainer.appendChild(card);
-  });
-}
+  // --- BRIEFE LOGIK ---
+  const envelopeContainer = document.getElementById('envelopes');
+  const letterView = document.getElementById('letterView');
+  const letterTitle = document.getElementById('letterTitle');
+  const letterBody = document.getElementById('letterBody');
+  const letterMedia = document.getElementById('letterMedia');
+  const closeBtn = document.getElementById('closeBtn');
 
-// Timeline laden, sobald die Seite fertig ist
-renderTimeline();
+  function getReadStatus() {
+    try { return JSON.parse(localStorage.getItem('readLetters') || '[]'); }
+    catch { return []; }
+  }
+
+  function saveReadStatus(index) {
+    const read = getReadStatus();
+    if (!read.includes(index)) {
+      read.push(index);
+      localStorage.setItem('readLetters', JSON.stringify(read));
+    }
+  }
+
+  function renderEnvelopes() {
+    if (!envelopeContainer) return;
+    const read = getReadStatus();
+    envelopeContainer.innerHTML = '';
+    
+    letters.forEach((letter, i) => {
+      const wrap = document.createElement('div');
+      wrap.className = 'envelope-wrap';
+      wrap.innerHTML = `
+        <div class="envelope">
+          <div class="paper">💌</div>
+          <div class="flap"></div>
+          <div class="pocket"></div>
+          <div class="envelope-title">${letter.title}</div>
+          ${read.includes(i) ? '<div class="read-badge">read</div>' : ''}
+        </div>
+      `;
+      wrap.addEventListener('click', () => openLetter(i, wrap));
+      envelopeContainer.appendChild(wrap);
+    });
+  }
+
+  function openLetter(i, wrap) {
+    if (!letterView) return;
+    wrap.classList.add('opening');
+
+    setTimeout(() => {
+      const letter = letters[i];
+      letterTitle.textContent = letter.title;
+      letterBody.textContent = letter.body;
+      
+      letterMedia.innerHTML = '';
+      if (letter.media && letter.media.length > 0) {
+        letter.media.forEach(item => {
+          if (item.type === 'polaroid') {
+            const imgWrap = document.createElement('div');
+            imgWrap.className = 'media-polaroid';
+            imgWrap.innerHTML = `<img src="${item.url}" alt="photo">`;
+            letterMedia.appendChild(imgWrap);
+          } else if (item.type === 'sticker') {
+            const img = document.createElement('img');
+            img.src = item.url;
+            img.className = 'media-sticker';
+            img.alt = "sticker";
+            letterMedia.appendChild(img);
+          }
+        });
+      }
+
+      letterView.classList.add('open');
+      saveReadStatus(i);
+    }, 550);
+
+    setTimeout(() => {
+      wrap.classList.remove('opening');
+      renderEnvelopes();
+    }, 1200);
+  }
+
+  if (closeBtn && letterView) {
+    closeBtn.addEventListener('click', () => letterView.classList.remove('open'));
+    letterView.addEventListener('click', (e) => {
+      if (e.target === letterView) letterView.classList.remove('open');
+    });
+  }
+
+  renderEnvelopes();
+
+  // --- MY DAY LOGIK ---
+  const timelineContainer = document.getElementById('timeline');
+  
+  function renderTimeline() {
+    if (!timelineContainer) return;
+    timelineContainer.innerHTML = '';
+    
+    myDayEntries.forEach(entry => {
+      const card = document.createElement('div');
+      card.className = 'day-card';
+      card.innerHTML = `
+        <div class="day-date">📅 ${entry.date}</div>
+        <img src="${entry.image}" alt="My day" class="day-image">
+        <div class="day-text">${entry.text}</div>
+      `;
+      timelineContainer.appendChild(card);
+    });
+  }
+
+  renderTimeline();
+});
