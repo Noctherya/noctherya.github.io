@@ -17,6 +17,7 @@
   <div class="nav-tabs">
     <button class="nav-btn active" onclick="switchTab('letters')">💌 Letters</button>
     <button class="nav-btn" onclick="switchTab('myday')">☀️ My Day</button>
+    <button class="nav-btn" onclick="switchTab('secrets')">✨ For You</button>
   </div>
 
   <!-- SEITE 1: Die Briefe -->
@@ -30,12 +31,25 @@
   <div id="page-myday" class="page">
     <h1>my day ☀️</h1>
     <p class="subtitle">click on a day to see our moments</p>
-    
-    <!-- Hier werden die Tage per JavaScript eingefügt -->
     <div class="days-list" id="daysList"></div>
   </div>
 
-  <!-- Das Overlay für die Briefe (muss außerhalb der Seiten liegen) -->
+  <!-- SEITE 3: For You (Die Herzen) -->
+  <div id="page-secrets" class="page secrets-page-theme">
+    <h1>little secrets 🩵</h1>
+    <p class="subtitle">tap a heart to reveal something</p>
+    
+    <!-- Der Haufen Herzen, die noch versteckt sind -->
+    <div class="hearts-container" id="heartsContainer"></div>
+
+    <!-- Die Unterkategorie für bereits geöffnete Herzen -->
+    <div id="openedSecretsSection" style="display: none; margin-top: 40px;">
+      <h2 class="opened-title">opened secrets</h2>
+      <div class="opened-list" id="openedList"></div>
+    </div>
+  </div>
+
+  <!-- Das Overlay für die Briefe -->
   <div class="letter-view" id="letterView">
     <div class="letter-card">
       <button class="close-btn" id="closeBtn">✕</button>
@@ -46,12 +60,21 @@
     </div>
   </div>
 
-  <!-- Das Overlay für die My Day Details (öffnet sich beim Klick auf ein Datum) -->
+  <!-- Das Overlay für die My Day Details -->
   <div class="letter-view" id="dayView">
     <div class="letter-card day-detail-card">
       <button class="close-btn" id="closeDayBtn">✕</button>
       <h2 id="dayDetailDate"></h2>
       <div class="day-detail-content" id="dayDetailContent"></div>
+    </div>
+  </div>
+
+  <!-- NEU: Das Overlay für die Herzen (For You) -->
+  <div class="letter-view" id="secretView">
+    <div class="letter-card secret-popup-card">
+      <button class="close-btn" id="closeSecretBtn">✕</button>
+      <div class="secret-media" id="secretMedia"></div>
+      <div class="secret-body" id="secretBody"></div>
     </div>
   </div>
 
@@ -73,6 +96,9 @@
       } else if (tabName === 'myday') {
         document.getElementById('page-myday').classList.add('active');
         document.querySelectorAll('.nav-btn')[1].classList.add('active');
+      } else if (tabName === 'secrets') {
+        document.getElementById('page-secrets').classList.add('active');
+        document.querySelectorAll('.nav-btn')[2].classList.add('active');
       }
     }
   </script>
