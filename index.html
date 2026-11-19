@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>For You 💌</title>
+  
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+  <link rel="manifest" href="manifest.json">
+</head>
+<body>
+
+<div class="app">
+  <h1>for you 💌</h1>
+  <p class="subtitle">a few letters from me</p>
+
+  <div class="envelopes" id="envelopes"></div>
+
+  <div class="letter-view" id="letterView">
+    <div class="letter-card">
+      <button class="close-btn" id="closeBtn">✕</button>
+      <h2 id="letterTitle"></h2>
+      
+      <div class="letter-media" id="letterMedia"></div>
+      
+      <div class="letter-body" id="letterBody"></div>
+      <div class="signature">— me 💙</div>
+    </div>
+  </div>
+</div>
+
+  <script src="script.js"></script>
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('/sw.js');
+    }
+  </script>
+</body>
+</html>
