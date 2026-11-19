@@ -8,7 +8,7 @@ const letters = [
     title: "you need a laugh",
     body: "okay, here's your official \"please laugh now\" letter:\n\nwhy can't programmers have relationships?\nbecause they always ask for a \"commit\" but never say \"yes\".\n\nand if that didn't work: just think about my face when i try to be technical. that's funny enough.\n\ni love you, you clown.",
     media: [
-      { type: "sticker", url: "https://i.postimg.cc/DEIN-LINK-HIER/pinguin.png" } 
+      { type: "sticker", url: "cd919016dd9c92801ea180bd6e67a4c1.jpg" } 
     ]
   },
   {
