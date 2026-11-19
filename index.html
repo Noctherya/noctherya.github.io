@@ -13,7 +13,7 @@
 
 <div class="app">
   
-  <!-- Die neue, schöne Navigations-Leiste -->
+  <!-- Die Navigations-Leiste -->
   <div class="nav-tabs">
     <button class="nav-btn active" onclick="switchTab('letters')">💌 Letters</button>
     <button class="nav-btn" onclick="switchTab('myday')">☀️ My Day</button>
@@ -26,14 +26,16 @@
     <div class="envelopes" id="envelopes"></div>
   </div>
 
-  <!-- SEITE 2: My Day -->
+  <!-- SEITE 2: My Day (Übersicht der Tage) -->
   <div id="page-myday" class="page">
     <h1>my day ☀️</h1>
-    <p class="subtitle">little moments i wish you were here for</p>
-    <div class="timeline" id="timeline"></div>
+    <p class="subtitle">click on a day to see our moments</p>
+    
+    <!-- Hier werden die Tage per JavaScript eingefügt -->
+    <div class="days-list" id="daysList"></div>
   </div>
 
-  <!-- Das Overlay für den geöffneten Brief -->
+  <!-- Das Overlay für die Briefe (muss außerhalb der Seiten liegen) -->
   <div class="letter-view" id="letterView">
     <div class="letter-card">
       <button class="close-btn" id="closeBtn">✕</button>
@@ -41,6 +43,15 @@
       <div class="letter-media" id="letterMedia"></div>
       <div class="letter-body" id="letterBody"></div>
       <div class="signature">— me 💙</div>
+    </div>
+  </div>
+
+  <!-- Das Overlay für die My Day Details (öffnet sich beim Klick auf ein Datum) -->
+  <div class="letter-view" id="dayView">
+    <div class="letter-card day-detail-card">
+      <button class="close-btn" id="closeDayBtn">✕</button>
+      <h2 id="dayDetailDate"></h2>
+      <div class="day-detail-content" id="dayDetailContent"></div>
     </div>
   </div>
 
