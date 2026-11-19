@@ -34,12 +34,17 @@ const myDayEntries = [
   {
     date: "November 19, 2026",
     image: "IMG_20261119_140747.jpg", 
-    text: "it's raining the whole time, ja thinking about how cozy it would be, the both of us cuddled up watching a movie while it's raining. 🌧️"
+    text: "it's raining the whole time, thinking about how cozy it would be, the both of us cuddled up watching a movie while it's raining. 🌧️"
   }
 ];
 
+// ==========================================
+// LOGIK (Hier musst du nichts mehr ändern)
+// ==========================================
+
 document.addEventListener('DOMContentLoaded', () => {
   
+  // --- BRIEFE LOGIK ---
   const envelopeContainer = document.getElementById('envelopes');
   const letterView = document.getElementById('letterView');
   const letterTitle = document.getElementById('letterTitle');
@@ -47,12 +52,16 @@ document.addEventListener('DOMContentLoaded', () => {
   const letterMedia = document.getElementById('letterMedia');
   const closeBtn = document.getElementById('closeBtn');
 
-  // NEU: Wir speichern jetzt auch die Anzahl der Öffnungen
+  // Holt die Zählerstände aus dem Handy-Speicher
   function getOpenCounts() {
-    try { return JSON.parse(localStorage.getItem('openCounts') || '{}'); }
-    catch { return {}; }
+    try { 
+      return JSON.parse(localStorage.getItem('openCounts')) || {}; 
+    } catch { 
+      return {}; 
+    }
   }
 
+  // Erhöht den Zähler um 1
   function incrementOpenCount(index) {
     const counts = getOpenCounts();
     counts[index] = (counts[index] || 0) + 1;
@@ -69,10 +78,9 @@ document.addEventListener('DOMContentLoaded', () => {
       wrap.className = 'envelope-wrap';
       const count = counts[i] || 0;
       
-      // Hier bauen wir den Counter ein, wenn der Brief schon geöffnet wurde
       let badgeHtml = '';
       if (count > 0) {
-        badgeHtml = `<div class="read-badge">read ${count > 1 ? count + 'x' : ''}</div>`;
+        badgeHtml = `<div class="read-badge">read ${count}x</div>`;
       }
 
       wrap.innerHTML = `
@@ -117,12 +125,15 @@ document.addEventListener('DOMContentLoaded', () => {
       }
 
       letterView.classList.add('open');
-      incrementOpenCount(i); // Zähler erhöhen
+      
+      // WICHTIG: Zähler erhöhen und Briefe neu zeichnen, damit das Badge sofort aktualisiert wird
+      incrementOpenCount(i);
+      setTimeout(renderEnvelopes, 100); 
+
     }, 550);
 
     setTimeout(() => {
       wrap.classList.remove('opening');
-      renderEnvelopes(); // Envelopes neu zeichnen, damit der neue Zähler angezeigt wird
     }, 1200);
   }
 
