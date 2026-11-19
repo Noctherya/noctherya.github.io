@@ -1,26 +1,26 @@
 const letters = [
   {
     title: "you first open this app",
-    body: "hey you,\n\nif you're reading this, you just opened our little app for the first time. i built it for you – with love, a little bit of chaos, and a whole lot of me in it.\n\nlook around. there are letters here for you. for every moment you need me.\n\ni love you.",
+    body: "hey baby,\n\nif you're reading this, you just opened our little app for the first time. i built it for you – with love, a little bit of chaos, and a whole lot of me in it.\n\nlook around. there are letters here for you. for every moment you need me. Bare with me but I'm really trying my best over here.\n\ni love you.",
     media: []
   },
   {
     title: "you need a laugh",
-    body: "okay, here's your official \"please laugh now\" letter:\n\nwhy can't programmers have relationships?\nbecause they always ask for a \"commit\" but never say \"yes\".\n\nand if that didn't work: just think about my face when i try to be technical. that's funny enough.\n\ni love you, you clown.",
+    body: "okay, here's your official \"please laugh now\" letter:\n\nwhy can't programmers have relationships?\nbecause they always ask for a \"commit\" but never say \"yes\".\n\nand if that didn't work: just think about my face when i am concentrating on something or you successfully ragebait me. that's funny enough.\n\ni love you, you Mr. Ragebaiter.",
     media: [
       { type: "sticker", url: "cd919016dd9c92801ea180bd6e67a4c1.jpg" } 
     ]
   },
   {
     title: "you need a smile",
-    body: "remember that day we [add your favorite memory here]? i think about it a lot.\n\nand about the way you laughed when [add something cute here].\n\ni hope this letter put a little smile on your face. you deserve to smile, always.",
+    body: "remember that day we first met? i think about it a lot.\n\nand about the way how nervous we both were like the whole time, now I feel the safest and calmest when I'm with you.\n\ni hope this letter put a little smile on your face. you deserve to smile, always.",
     media: [
       { type: "polaroid", url: "IMG_20261119_063230.jpg" } 
     ]
   },
   {
     title: "you miss me",
-    body: "i miss you too. a lot.\n\nsometimes the distance is hard, but you know what? you're with me in every moment. in my thoughts, in my heart, in the song i'm listening to right now.\n\nthis letter is my little way of telling you: i'm here. even when i'm far away.\n\ni'm counting the days until i see you again. and until then: open this letter as often as you want. it stays here for you. always.\n\ni love you so much.",
+    body: "i miss you too. a lot.\n\nsometimes the distance is hard, but you know what? you're with me in every moment. in my thoughts, in my heart, in the song i'm listening to right now, like literally every song is somehow connected to you.\n\nthis letter is my little way of telling you: i'm here. even when i'm not physically with you.\n\ni'm counting the days until i see you again. and until then: open this letter as often as you want. it stays here for you. That's why I did this whole thing.\n\ni love you so so so much Darling.",
     media: []
   }
 ];
