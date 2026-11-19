@@ -514,3 +514,21 @@ h1 {
   height: 35px;
   font-size: 1rem;
 }
+
+/* --- NEU: Das Pinguin-Siegel --- */
+.seal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 1.8rem;
+  z-index: 5; /* Damit er über dem Papier liegt */
+  filter: drop-shadow(0px 2px 3px rgba(0,0,0,0.3)); /* Kleiner Schatten für 3D-Look */
+  transition: all 0.4s ease;
+}
+
+/* Wenn der Brief aufgeht, verschwindet der Pinguin mit einem kleinen Hüpfer */
+.envelope-wrap.opening .seal {
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(1.5) rotate(15deg); 
+}
