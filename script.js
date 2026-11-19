@@ -107,3 +107,39 @@ letterView.addEventListener('click', (e) => {
 });
 
 renderEnvelopes();
+
+// --- NEU: Daten für My Day ---
+const myDayEntries = [
+  {
+    date: "November 18, 2026",
+    image: "cd919016dd9c92801ea180bd6e67a4c1.jpg", // Der Name deines Bildes, das du hochgeladen hast
+    text: "had a coffee today and thought of you. i kept looking at the empty chair next to me. wish you were here. ☕️"
+  },
+  {
+    date: "November 19, 2026",
+    image: "DEIN_BILD_LINK_HIER.jpg", 
+    text: "the sky looked so pretty today. i took a picture so you could see it too. miss you. 🌅"
+  }
+];
+
+// Funktion, um die Timeline aufzubauen
+function renderTimeline() {
+  const timelineContainer = document.getElementById('timeline');
+  if (!timelineContainer) return; // Falls das Element noch nicht da ist
+
+  timelineContainer.innerHTML = '';
+  
+  myDayEntries.forEach(entry => {
+    const card = document.createElement('div');
+    card.className = 'day-card';
+    card.innerHTML = `
+      <div class="day-date">📅 ${entry.date}</div>
+      <img src="${entry.image}" alt="My day" class="day-image">
+      <div class="day-text">${entry.text}</div>
+    `;
+    timelineContainer.appendChild(card);
+  });
+}
+
+// Timeline laden, sobald die Seite fertig ist
+renderTimeline();
