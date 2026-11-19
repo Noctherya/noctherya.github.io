@@ -71,7 +71,11 @@ const myDayData = [
     date: "November 19, 2026",
     entries: [
       { image: "IMG_20261119_063216.jpg", text: "outfit of the day, aber kennst du ja schon. ☕️" },
-      { image: "IMG_20261119_140747.jpg", text: "it's raining the whole time, thinking about how cozy it would be, the both of us cuddled up watching a movie while it's raining. 🌧️" }
+      { image: "IMG_20261119_140747.jpg", text: "it's raining the whole time, thinking about how cozy it would be, the both of us cuddled up watching a movie while it's raining. 🌧️" },
+      { image: "IMG_20261119_161413.jpg", text: "Neueröffnung dm, hab soo viel schönes gesehen. ich hab die ganze zeit gedacht, wie sehr du das geliebt hättest. ich wünschte wirklich, du wärst dabei gewesen. 🛍️" },
+      { image: "IMG_20261119_161527.jpg", text: "Smelled soooo good, I just know you'd agree." },
+      { image: "IMG_20261119_162212.jpg", text: "Neueröffnung REWE, es gab einfach Popcorn aber leider nicht vegan 🥹." },
+      { image: "IMG_20261119_164511.jpg", text: "Stood in checkout line for at least 15mins, bored af." }
     ]
   }
 ];
