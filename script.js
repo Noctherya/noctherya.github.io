@@ -49,6 +49,98 @@ const secretsData = [
     body: "I am so incredibly proud of you. Never forget that.",
     image: ""
   }
+  {
+    body: "I heard a song today and immediately thought of you. Suddenly the whole day was a little bit better.",
+    image: ""
+  },
+  {
+    body: "i love the way you always say goodnight before hanging up on call. I always want to call back the exact second we hang up",
+    image: ""
+  },
+  {
+    body: "I really really miss hugging you, 9/10 times I'm crying when hugging Hasi",
+    image: ""
+  },
+  {
+    body: "I saw someone today that laughs the way you do, my heart made a flip, silly thing, hoping you'd be there",
+    image: ""
+  },
+  {
+    body: "I've already imagined what our wedding would look like, ooops",
+    image: ""
+  },
+  {
+    body: "I have never loved anyone the way I love you. And I'm being dead serious right now, you make me feel complete",
+    image: ""
+  },
+  {
+    body: "sometimes I'm scared of being annoying if I text too much but I just can't help it",
+    image: ""
+  },
+  {
+    body: "yes I am jealous. insanely jealous of everyone that came before me and I know how ridiculous that is because they made you become the person you are now, and I love that person more than anything else. but sometimes it just..hurts?",
+    image: ""
+  },
+  {
+    body: "I don't know if you know. but you're really healing my relationship toward food and that's more than anyone has ever done for me",
+    image: ""
+  },
+  {
+    body: "I cried today because I miss you so much, but it wasn't just sadness, I was overwhelmed by how much I'm feeling for you",
+    image: ""
+  },
+  {
+    body: "when I was on the bus today I couldn't stop thinking about how much better it would be if you'd be there, holding my hand, me resting my head on your shoulder, I just really miss you",
+    image: ""
+  },
+  {
+    body: "You never ask me to be someone I'm not and I think that is worth so much more than you think it is",
+    image: ""
+  },
+  {
+    body: "sometimes I'm scared that you'll wake up one day and realize I'm not as special as you thought I were",
+    image: ""
+  },
+  {
+    body: "when I'm with you my head simply goes quiet, you are my calm",
+    image: ""
+  },
+  {
+    body: "I'm so so incredibly proud of you, for trying to let go of your bad habits for me and I'm trying my best to do the same, I want to be a better person - for you - for us",
+    image: ""
+  },
+  {
+    body: "I love ALL the petnames you give me",
+    image: ""
+  },
+  {
+    body: "I love your sleepy you when I call to wake you up, I'm always smiling doing so",
+    image: ""
+  },
+  {
+    body: "sometimes I hate myself so much I just want to hide from everyone but then I remember you think I'm beautiful and that - just helps",
+    image: ""
+  },
+  {
+    body: "I'm scared that if I tell you how much I actually need you, you'd feel trapped",
+    image: ""
+  },
+  {
+    body: "I love your humor. even your bad jokes that you know are bad but tell them anyway",
+    image: ""
+  },
+  {
+    body: "silly but valid. I love your height. the way I have to look up at you",
+    image: ""
+  },
+  {
+    body: "I love that you make me feel like the most important person in the world. even if it's just through our calls. it matters to me",
+    image: ""
+  },
+  {
+    body: "I worry that I'm not enough for you. not pretty enough, not as pretty as your ex-girlfriends. that I'm not smart or funny enough..just not enough.",
+    image: ""
+  },
 ];
 
 document.addEventListener('DOMContentLoaded', () => {
