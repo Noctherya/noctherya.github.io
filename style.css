@@ -334,3 +334,118 @@ h1 {
   color: #4a4048;
   line-height: 1.4;
 }
+
+/* --- NEU: For You (Herzen & Geheimnisse) --- */
+.secrets-page-theme {
+  background: transparent; /* Das App-Design bleibt */
+}
+
+.hearts-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 20px;
+  padding: 20px;
+}
+
+/* Die kleinen Herzen */
+.heart-btn {
+  background: none;
+  border: none;
+  font-size: 2.5rem; /* Größe der Herzen */
+  cursor: pointer;
+  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.2s;
+  filter: drop-shadow(0 4px 6px rgba(155, 107, 122, 0.2));
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Abwechselnde Verzögerung für den Schwebe-Effekt */
+.heart-btn:nth-child(even) { animation-delay: 1.5s; }
+.heart-btn:nth-child(3n) { animation-delay: 0.8s; }
+
+.heart-btn:hover {
+  transform: scale(1.2) rotate(10deg);
+}
+
+.heart-btn:active {
+  transform: scale(0.9);
+}
+
+/* Die Farbe der Herzen (Babyblau & Rosa) */
+.heart-btn:nth-child(odd) { color: #a8d8ea; } /* Babyblau */
+.heart-btn:nth-child(even) { color: #f4b6c2; } /* Rosa */
+
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
+  100% { transform: translateY(0px); }
+}
+
+/* Unterkategorie für geöffnete Nachrichten */
+.opened-title {
+  font-family: 'Caveat', cursive;
+  font-size: 1.8rem;
+  color: #9b6b7a;
+  margin-bottom: 15px;
+  text-align: center;
+  border-bottom: 1px dashed #e8d5dc;
+  padding-bottom: 10px;
+}
+
+.opened-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding-bottom: 40px;
+}
+
+.opened-item {
+  background: #fff;
+  border: 1px solid #e8d5dc;
+  border-radius: 12px;
+  padding: 15px;
+  text-align: left;
+  box-shadow: 0 4px 12px rgba(176, 128, 144, 0.1);
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.opened-item:hover {
+  transform: translateY(-2px);
+}
+
+.opened-item-title {
+  font-family: 'Caveat', cursive;
+  font-size: 1.4rem;
+  color: #9b6b7a;
+  margin-bottom: 5px;
+}
+
+/* Das Popup für die Herzen */
+.secret-popup-card {
+  background: linear-gradient(135deg, #fdfaf2 0%, #e8f4f8 100%); /* Rosa zu Babyblau */
+  border: 2px solid #a8d8ea;
+  box-shadow: 0 15px 50px rgba(168, 216, 234, 0.4), inset 0 0 60px rgba(244, 182, 194, 0.2);
+  text-align: center;
+}
+
+.secret-popup-card .secret-body {
+  font-family: 'Caveat', cursive;
+  color: #4a4048;
+  line-height: 1.6;
+  font-size: 1.5rem;
+  white-space: pre-line;
+  margin-top: 10px;
+}
+
+.secret-popup-card .secret-media img {
+  width: 100%;
+  max-height: 250px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  border: 4px solid #fff;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  transform: rotate(-1deg);
+}
