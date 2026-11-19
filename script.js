@@ -61,7 +61,7 @@ const secretsData = [
 ];
 
 const usData = [
-  "IMG_20261119_063230.jpg" 
+  "Screenshot_2026-11-19-15-37-44-844_com.miui.gallery-edit.jpg" 
 ];
 
 document.addEventListener('DOMContentLoaded', () => {
