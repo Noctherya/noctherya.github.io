@@ -112,8 +112,8 @@ renderEnvelopes();
 const myDayEntries = [
   {
     date: "November 18, 2026",
-    image: "cd919016dd9c92801ea180bd6e67a4c1.jpg", // Der Name deines Bildes, das du hochgeladen hast
-    text: "had a coffee today and thought of you. i kept looking at the empty chair next to me. wish you were here. ☕️"
+    image: "IMG_20261119_063216.jpg", // Der Name deines Bildes, das du hochgeladen hast
+    text: "outfit of the day, aber kennst du ja schon. ☕️"
   },
   {
     date: "November 19, 2026",
