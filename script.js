@@ -61,7 +61,7 @@ const letters = [
   },
   {
     title: "when you had a bad day",
-    body: "hey baby,\n\ni'm so sorry today was shit. i wish i could be there right now to just hold you and make it better. i know sometimes the world is just too loud and everything feels like too much.\n\nbut listen to me: you don't have to carry this alone. you don't have to be strong all the time. it's okay to be overwhelmed. it's okay to just exist today.\n\ntake a deep breath. drink some water. and remember that i am so incredibly proud of you, no matter what happened today. tomorrow is a new day, and i'll be right here by your side. i love you more than anything.",
+    body: "hey baby,\n\ni'm so sorry today was shit. i wish i could be there right now to just hold you and make it better. i know sometimes the world is just too loud and everything feels like too much.\n\nbut listen to me: you don't have to carry this alone. you don't have to be strong all the time. it's okay to be overwhelmed. it's okay to just exist today.\n\ntake a deep breath. drink some water. and remember that i am so incredibly proud of you, no matter what happened today. tomorrow is a new day, and i'll be right by your side. i love you more than anything.",
     media: []
   }
 ];
@@ -111,9 +111,6 @@ const usData = [
 
 document.addEventListener('DOMContentLoaded', () => {
   
-  // ==========================================
-  // BRIEFE LOGIK
-  // ==========================================
   const envelopeContainer = document.getElementById('envelopes');
   const letterView = document.getElementById('letterView');
   const letterTitle = document.getElementById('letterTitle');
@@ -140,7 +137,6 @@ document.addEventListener('DOMContentLoaded', () => {
       wrap.className = 'envelope-wrap';
       const count = counts[i] || 0;
       let badgeHtml = count > 0 ? `<div class="read-badge">read ${count}x</div>` : '';
-
       wrap.innerHTML = `
         <div class="envelope">
           <div class="paper">💌</div>
@@ -158,12 +154,10 @@ document.addEventListener('DOMContentLoaded', () => {
   function openLetter(i, wrap) {
     if (!letterView) return;
     wrap.classList.add('opening');
-
     setTimeout(() => {
       const letter = letters[i];
       letterTitle.textContent = letter.title;
       letterBody.innerHTML = letter.body.replace(/(https?:\/\/[^\s]+)/g, '<a href="$1" target="_blank" style="color: #9b6b7a; text-decoration: underline;">$1</a>');
-      
       letterMedia.innerHTML = '';
       if (letter.media && letter.media.length > 0) {
         letter.media.forEach(item => {
@@ -186,12 +180,10 @@ document.addEventListener('DOMContentLoaded', () => {
           }
         });
       }
-
       letterView.classList.add('open');
       incrementOpenCount(i);
       setTimeout(renderEnvelopes, 100); 
     }, 550);
-
     setTimeout(() => { wrap.classList.remove('opening'); }, 1200);
   }
 
@@ -201,9 +193,6 @@ document.addEventListener('DOMContentLoaded', () => {
   }
   renderEnvelopes();
 
-  // ==========================================
-  // MY DAY LOGIK
-  // ==========================================
   const daysList = document.getElementById('daysList');
   const dayView = document.getElementById('dayView');
   const dayDetailDate = document.getElementById('dayDetailDate');
@@ -248,9 +237,6 @@ document.addEventListener('DOMContentLoaded', () => {
   }
   renderDaysList();
 
-  // ==========================================
-  // FOR YOU (HERZEN) LOGIK
-  // ==========================================
   const heartsContainer = document.getElementById('heartsContainer');
   const openedSecretsSection = document.getElementById('openedSecretsSection');
   const openedList = document.getElementById('openedList');
@@ -299,4 +285,81 @@ document.addEventListener('DOMContentLoaded', () => {
         heart.className = 'pile-heart';
         heart.innerHTML = '🩵';
         const randomX = (Math.random() * 80) - 40;
-        const randomY = (Math.random() * 80
+        const randomY = (Math.random() * 80) - 40;
+        const randomRotate = (Math.random() * 60) - 30;
+        heart.style.transform = `translate(${randomX}px, ${randomY}px) rotate(${randomRotate}deg)`;
+        if (i % 2 === 0) heart.style.color = '#a8d8ea';
+        else heart.style.color = '#f4b6c2';
+        pileBtn.appendChild(heart);
+      }
+      pileBtn.addEventListener('click', openRandomSecret);
+      heartsContainer.appendChild(pileBtn);
+    }
+
+    if (hasOpened) openedSecretsSection.style.display = 'block';
+    else openedSecretsSection.style.display = 'none';
+  }
+
+  function openRandomSecret() {
+    const openedIndices = getOpenedSecrets();
+    const unopenedIndices = [];
+    secretsData.forEach((_, index) => {
+      if (!openedIndices.includes(index)) unopenedIndices.push(index);
+    });
+    if (unopenedIndices.length === 0) return;
+    const randomIndex = unopenedIndices[Math.floor(Math.random() * unopenedIndices.length)];
+    openSecret(randomIndex);
+  }
+
+  function openSecret(index) {
+    if (!secretView) return;
+    const secret = secretsData[index];
+    secretBody.textContent = secret.body;
+    secretMedia.innerHTML = '';
+    if (secret.image) {
+      const img = document.createElement('img');
+      img.src = secret.image;
+      secretMedia.appendChild(img);
+    }
+    saveOpenedSecret(index);
+    secretView.classList.add('open');
+    renderSecrets();
+  }
+
+  if (closeSecretBtn && secretView) {
+    closeSecretBtn.addEventListener('click', () => secretView.classList.remove('open'));
+    secretView.addEventListener('click', (e) => { if (e.target === secretView) secretView.classList.remove('open'); });
+  }
+  renderSecrets();
+
+  const pinboard = document.getElementById('pinboard');
+  const imageView = document.getElementById('imageView');
+  const enlargedImage = document.getElementById('enlargedImage');
+  const closeImageBtn = document.getElementById('closeImageBtn');
+
+  function renderPinboard() {
+    if (!pinboard) return;
+    pinboard.innerHTML = '';
+    usData.forEach((imgSrc) => {
+      const photo = document.createElement('div');
+      photo.className = 'pinned-photo';
+      const randomRotation = (Math.random() * 20) - 10; 
+      photo.style.transform = `rotate(${randomRotation}deg)`;
+      photo.innerHTML = `
+        <div class="pin"></div>
+        <img src="${imgSrc}" alt="Us">
+      `;
+      photo.addEventListener('click', () => {
+        enlargedImage.src = imgSrc;
+        imageView.classList.add('open');
+      });
+      pinboard.appendChild(photo);
+    });
+  }
+
+  if (closeImageBtn && imageView) {
+    closeImageBtn.addEventListener('click', () => imageView.classList.remove('open'));
+    imageView.addEventListener('click', (e) => { if (e.target === imageView) imageView.classList.remove('open'); });
+  }
+  renderPinboard();
+});
