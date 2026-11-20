@@ -117,7 +117,13 @@ const secretsData = [
   { body: "I love your humor. even your bad jokes that you know are bad but tell them anyway", image: "" },
   { body: "silly but valid. I love your height. the way I have to look up at you", image: "" },
   { body: "I love that you make me feel like the most important person in the world. even if it's just through our calls. it matters to me", image: "" },
-  { body: "I worry that I'm not enough for you. not pretty enough, not as pretty as your ex-girlfriends. that I'm not smart or funny enough..just not enough.", image: "" }
+  { body: "I worry that I'm not enough for you. not pretty enough, not as pretty as your ex-girlfriends. that I'm not smart or funny enough..just not enough.", image: "" },
+{ body: "I was doing my hair this morning and suddenly you popped into my head. And I just smiled like an idiot.", image: "" },
+{ body: "Sometimes I look at the pictures you send me and I just think about how lucky I am that you're mine.", image: "" },
+{ body: "I  really miss your smell. It's such a specific, comforting thing that I can't explain, but I really miss it.", image: "" },
+{ body: "I'm so used to texting you all day that when you're busy, my phone feels weirdly empty. I hate itttt.", image: "" },
+{ body: "I  love that I can tell you literally anything, even the most random, stupid thoughts and you just listen like it's the most important thing u've ever heard.", image: "" },
+{ body: "", image: "" },
 ];
 
 const usData = [
