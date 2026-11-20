@@ -131,7 +131,7 @@ const myDayData = [
       },
      {  image: "IMG_20261120_065149.jpg", 
         text: "OOTD 🍂🌰" 
-      },
+      }
     ]
   }
 ];
