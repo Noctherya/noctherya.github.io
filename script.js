@@ -63,7 +63,52 @@ const letters = [
     title: "when you had a bad day",
     body: "hey baby,\n\ni'm so sorry today was shit. i wish i could be there right now to just hold you and make it better. i know sometimes the world is just too loud and everything feels like too much.\n\nbut listen to me: you don't have to carry this alone. you don't have to be strong all the time. it's okay to be overwhelmed. it's okay to just exist today.\n\ntake a deep breath. drink some water. and remember that i am so incredibly proud of you, no matter what happened today. tomorrow is a new day, and i'll be right by your side. i love you more than anything.",
     media: []
-  }
+  },
+{ 
+  title: "you are upset or angry (but not at me)", 
+  body: "hey my love,\n\ni can tell you're not having a good time right now. and i'm so sorry. i wish i could take whatever is bothering you and throw it away.\n\nyou don't have to talk about it if you don't want to. you can just be angry. you can just be quiet. i'm not going anywhere.\n\nwhen you're ready and u wanna talk about it, I'm always there to listen to you, no matter how small you might think it is. Just tell me. Like who's the person we hate and why? Cuz I'm going all in, if you don't like em, we don't like em. Or if u're disappointed in someone - I'd gladly listen to what happened. Or we can yap about anything till you forget about it. i love you.", 
+  media: [] 
+},
+{ 
+  title: "you're bored", 
+  body: "hello there,\n\nare you bored? because i'm literally always here to entertain you. \n\nso here is your task: close your eyes and think about the last time we kissed. think about how it felt, how you held me, and how i looked at you afterwards. \n\ndid it work? are you still bored? if yes, just text me. i'll find something stupid to send you. Or we can talk about literally anything, oooor I can reel spam you again, not that I would ever complain about doing it, it's my fav hobby to find things to send to you. i love you.", 
+  media: [] 
+},
+{ 
+  title: "you need to feel my love", 
+  body: "hey sebo,\n\ni need you to stop whatever you're doing right now and just feel and read this.\n\ni love you. deeply. completely. i love the way you talk, the way you walk, the way you treat me. i love that you are mine. The way that everything you do for me feels so natural and not forced in the slightest. that you show me that YOU love me too. That you care for me even though I always say I can take care of myself - I hate people treating me differently for the way my head works but you see...me. Not the disordered me but me and that is so much more I could've ever asked for. \n\neven when we are miles apart, my love for you is right there. it's not going anywhere. you are so incredibly loved and cherished, and appreciated. God I'm so grateful for whoever made me find you. Because you are the part of my day I look forward when going to bed, waking up, working. I wake up happy because I know you'll be there. I know you'll be there to listen to me when I don't want to talk to anyone but you. don't ever forget it.", 
+  media: [] 
+},
+{ 
+  title: "you're feeling down", 
+  body: "hey baby,\n\ni know things feel heavy right now. i know you're probably in your head about something. but i need you to know that whatever it is, it's not bigger than us.\n\nyou are strong. you are capable. and you are so, so loved. i am so proud of the man you are. take a deep breath. i'm holding your hand from here, hugging you telepathically. Just hug Bruno tightly, he's a part of me I gifted you in times i can't be there with you physically, so basically you're hugging me! i love you.", 
+  media: [] 
+},
+{ 
+  title: "you need a pep talk", 
+  body: "listen to me very carefully: you are sebo. you are 24 years old, you are smart, you are funny, you are capable, and you are literally the best thing that happened to me. \n\nwhatever you are doubting right now, it's a lie. you can do this. you can handle whatever is in front of you. and if you can't, that's okay too, because i'll be right here to catch you. It worked out? I'mma be soon proud of you. It didn't work out? I'm incredibly proud of you for trying even though I know you doubted yourself from the beginning. so there's nothing to be afraid of. No matter the outcome - I'll be there for you. now go out there and do whatever your head is breaking over right now.", 
+  media: [] 
+},
+{ 
+  title: "you're stressed out", 
+  body: "hey baby,\n\nstop. breathe. just for a second. \n\nwhatever is stressing you out right now, it's not the end of the world. you don't have to solve everything today. you just have to get through today. and you will. \n\nimagine my hands on your shoulders, pulling you into a tight hug. Mwah mwah - ing your whole face till you smile again. that's what i would do if i was there. i love you. you're doing great.", 
+  media: [] 
+},
+{ 
+  title: "you need a lift", 
+  body: "hey you,\n\nyou need a little boost? here it is: \n\nyou are the most attractive, the most patient, and the most loving person i have ever met. i love you so much that it sometimes scares me. you have no idea how much you mean to me. And I genuinely mean that, there aren't even enough words in this world to describe how much my heart aches for you and how much you mean to me. All the videos about you being my 11:11, my blown out candles and birthdays, my lucky lashes - I really mean them. you're everything I ever dreamed about, didn't know you'd be it but I'm so so happy out of all 8 Billion people - it's you.  \n\nnow go and conquer the rest of your day. i'm cheering for you.", 
+  media: [] 
+},
+{ 
+  title: "you don't feel handsome", 
+  body: "hey sebo,\n\nare you looking in the mirror and not liking what you see? because i can tell you right now, that is a lie.\n\nyou are the most handsome man i know. but it's not just your face, it's your heart. it's how you treat me. it's the way you look at me like i'm the only girl in the world. \n\nto me, you are perfect. exactly as you are. don't forget that. (You look fucking handsome overall tho)", 
+  media: [] 
+},
+{ 
+  title: "you're sick", 
+  body: "hey baby,\n\nare you sick? because if you are, i wish i could be there right now to take care of you. i would make you soup, cuddle you, and complain when you give me your germs (but secretly love it).\n\nrest, drink water, and just let yourself be sick for a while. i'm sending you lots of virtual hugs and kisses. Get some rest, sleep. I'm the least thing you should worry about right now and so is everyone else. Just focus on yourself now, okay? get well soon, my love.", 
+  media: [] 
+},
 ];
 
 const myDayData = [
