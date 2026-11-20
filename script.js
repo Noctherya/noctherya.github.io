@@ -77,6 +77,17 @@ const myDayData = [
       { image: "IMG_20261119_162212.jpg", text: "Neueröffnung REWE, es gab einfach Popcorn aber leider nicht vegan 🥹." },
       { image: "IMG_20261119_164511.jpg", text: "Stood in checkout line for at least 15mins, bored af." }
     ]
+  },
+  {
+    date: "November 20, 2026",
+    entries: [
+      { image: "IMG_20261120_071919.jpg", 
+        text: "Helga im Urlaub, meaning I can work in the dark again hihi" 
+      },
+     {  image: "IMG_20261120_065149.jpg", 
+        text: "OOTD 🍂🌰" 
+      },
+    ]
   }
 ];
 
