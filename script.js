@@ -171,7 +171,7 @@ const secretsData = [
 { body: "I  love that you never made me feel like a burden for being stuck in my past. You have no idea how much that means to me", image: "" },
 { body: "I love how patient you are with me. You never push me. You just reassure me that I'm worth waiting for. And that makes me want to be better for you", image: "" },
 { body: "I love that you hype me up for literally everything. Even when I do something tiny, you make me feel like I just won an award", image: "" },
-{ body: "I love that you're proud to call me yours. You don't hide it, you don't play games. You just show it."", image: "" },
+{ body: "I love that you're proud to call me yours. You don't hide it, you don't play games. You just show it.", image: "" },
 { body: "I love the way you say my name. It sounds different when you say it. It sounds like home", image: "" },
 { body: "I love that when I'm with you, my brain just shuts up. I don't have to overthink. I don't have to be anxious or someone else. I'm just... calm", image: "" },
 { body: "I love that you never make me feel crazy for overthinking. You just talk me through it", image: "" },
