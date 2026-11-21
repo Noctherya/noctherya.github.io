@@ -126,26 +126,18 @@ const myDayData = [
   {
     date: "November 20, 2026",
     entries: [
-      { image: "IMG_20261120_071919.jpg", 
-        text: "Helga im Urlaub, meaning I can work in the dark again hihi" 
-      },
-     {  image: "IMG_20261120_065149.jpg", 
-        text: "OOTD 🍂🌰" 
-      }
+      { image: "IMG_20261120_071919.jpg", text: "Helga im Urlaub, meaning I can work in the dark again hihi" },
+      { image: "IMG_20261120_065149.jpg", text: "OOTD 🍂🌰" }
     ]
   },
-{
+  {
     date: "November 21, 2026",
     entries: [
-      { image: "MyImage-1795274586-00.jpg", 
-        text: "OOTD and I love ittt" 
-      },
-{  image: "IMG_20261121_161601.jpg", 
-        text: "as always überall Baustellen" 
-      },
-{  image: "IMG_20261121_144447.jpg", 
-        text: "Schuhe mit Hunden ✓✓ " 
-      }
+      { image: "MyImage-1795274586-00.jpg", text: "OOTD and I love ittt" },
+      { image: "IMG_20261121_161601.jpg", text: "as always überall Baustellen" },
+      { image: "IMG_20261121_144447.jpg", text: "Schuhe mit Hunden ✓✓" }
+    ]
+  }
 ];
 
 const secretsData = [
