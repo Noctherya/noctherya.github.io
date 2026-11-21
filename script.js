@@ -142,6 +142,9 @@ const myDayData = [
       },
 {  image: "IMG_20261121_161601.jpg", 
         text: "as always überall Baustellen" 
+      },
+{  image: "IMG_20261121_144447.jpg", 
+        text: "Schuhe mit Hunden ✓✓ " 
       }
 ];
 
