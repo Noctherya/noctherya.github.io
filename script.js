@@ -139,6 +139,9 @@ const myDayData = [
     entries: [
       { image: "MyImage-1795274586-00.jpg", 
         text: "OOTD and I love ittt" 
+      },
+{  image: "IMG_20261121_161601.jpg", 
+        text: "as always überall Baustellen" 
       }
 ];
 
