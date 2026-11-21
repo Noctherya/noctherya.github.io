@@ -133,7 +133,13 @@ const myDayData = [
         text: "OOTD 🍂🌰" 
       }
     ]
-  }
+  },
+{
+    date: "November 21, 2026",
+    entries: [
+      { image: "MyImage-1795274586-00.jpg", 
+        text: "OOTD and I love ittt" 
+      }
 ];
 
 const secretsData = [
